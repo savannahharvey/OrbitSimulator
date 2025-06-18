@@ -1,0 +1,45 @@
+# Ignore Visual Studio files
+*.vcxproj
+*.vcxproj.filters
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.ipch/
+*.pdb
+*.obj/
+*.idb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+bin/
+obj/
+
+# Ignore Xcode files
+*.xcworkspace
+*.xcodeproj
+*.xcuserstate
+DerivedData/
+build/
+
+# Ignore common build artifacts
+*.o
+*.a
+*.so
+*.exe
+*.out
+*.dll
+*.dylib
+*.class
+
+# Ignore backup and temporary files
+*~
+*.swp
+*.tmp
+*.log
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
