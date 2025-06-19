@@ -15,6 +15,7 @@
 #include <cmath>
 
 class TestPosition;
+class TestSpaceObject;
 class Acceleration;
 class Velocity;
 
@@ -26,6 +27,7 @@ class Position
 {
 public:
    friend TestPosition;
+   friend TestSpaceObject;
    
    // constructors
    Position()            : x(0.0), y(0.0)  {}
