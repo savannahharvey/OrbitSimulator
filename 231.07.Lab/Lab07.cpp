@@ -49,9 +49,16 @@ public:
       // draw the stars
       for (int i = 0; i < 50; i++)
          starVect[i].draw(gout);
+
+      // draw the earth
+      Position earthPos(0.0, 0.0);
+      rotationSpeed+= -0.004; // arbitrary for now...
+      gout.drawEarth(earthPos, rotationSpeed);
    }
 
    Position ptUpperRight;
+
+   double rotationSpeed;
 
    Position ptStar;
    unsigned char phaseStar;
@@ -67,7 +74,11 @@ public:
  **************************************/
 void callBack(const Interface* pUI, void* p)
 {
-   
+   // the first step is to cast the void pointer into a game object. This
+   // is the first step of every single callback function in OpenGL. 
+   Simulator* pSim = (Simulator*)p;
+
+   pSim->draw();
 }
 
 double Position::metersFromPixels = 40.0;
@@ -95,15 +106,14 @@ int main(int argc, char** argv)
    ptUpperRight.setPixelsX(1000.0);
    ptUpperRight.setPixelsY(1000.0);
    Interface ui(0, NULL,
-      "Demo",   /* name on the window */
+      "Simulator",   /* name on the window */
       ptUpperRight);
 
-   Planet earth;
-   Position pos;
+   // Initialize the demo
+   Simulator sim(ptUpperRight);
 
-   pos.setMeters(-36515095.13, 21082000.0);
-
-   Acceleration gravity = earth.calcGravity(pos);
+   // set everything into action
+   ui.run(callBack, &sim);
 
    return 0;
 }

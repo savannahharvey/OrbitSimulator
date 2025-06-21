@@ -38,7 +38,10 @@ double Planet::calcMagnitude(double height)
 {
 	double gravityAccel;
 
-	gravityAccel = earthGravity * (radius / (radius + height)) * (radius / (radius + height));
+	if (height > -6378000.0)
+		gravityAccel = earthGravity * (radius / (radius + height)) * (radius / (radius + height));
+	else
+		return earthGravity;
 
 	return gravityAccel;
 }

@@ -12,8 +12,7 @@
 
 #include "planet.h"
 #include "unitTest.h"
-#include "angle.h"
-#include "acceleration.h"
+#include "position.h"
 
  /*******************************
   * TEST Planet
@@ -25,93 +24,68 @@ public:
    void run()
    {
       // Calculations
-      calcGravity_0();
-      calcGravity_Pi();
-      calcGravity_example();
-      calcGravityDirection_3_14();
+      calcGravity_98();
+      calcGravity_96();
+      calcGravity_30degrees();
 
       report("Planet");
    }
 
 private:
-   void calcGravity_0()
+   void calcGravity_98()
    {
       // setup
-      Planet phys;
-      double height = 35786000.0;
-      Angle angle;
-      angle.radians = 0.0;
+      Planet earth;
+      Position pos;
+      pos.x = 0.0;
+      pos.y = 0.0;
 
       Acceleration a;
 
       // exercise
-      a = phys.calcGravity(height, angle);
+      a = earth.calcGravity(pos);
 
       // verify
       assertEquals(a.ddx, 0.0);
-      assertEquals(a.ddy, 0.2243913421);
-      assertEquals(angle.radians, 0.0);
-      assertEquals(height, 35786000.0);
+      assertEquals(a.ddy, 9.80665);
       // teardown
    }
 
-   void calcGravity_Pi()
+   void calcGravity_96()
    {
       // setup
-      Planet phys;
-      double height = 35786000.0;
-      Angle angle;
-      angle.radians = M_PI;
+      Planet earth;
+      Position pos;
+      pos.x = 0.0;
+      pos.y = 6413786.0; // GEO
 
       Acceleration a;
 
       // exercise
-      a = phys.calcGravity(height, angle);
+      a = earth.calcGravity(pos);
 
       // verify
       assertEquals(a.ddx, 0.0);
-      assertEquals(a.ddy, -0.2243913421);
-      assertEquals(angle.radians, M_PI);
-      assertEquals(height, 35786000.0);
+      assertEquals(a.ddy, -9.69752202717);
       // teardown
    }
 
-   void calcGravity_example()
+   void calcGravity_30degrees()
    {
       // setup
-      Planet phys;
-      double height = 35786000.0;
-      Angle angle;
-      angle.radians = 0.523599;
+      Planet earth;
+      Position pos;
+      pos.x = 21082000.0;
+      pos.y = 36515095.0;
 
       Acceleration a;
 
       // exercise
-      a = phys.calcGravity(height, angle);
+      a = earth.calcGravity(pos);
 
       // verify
-      assertEquals(a.ddx, 0.1122);
-      assertEquals(a.ddy, 0.1943);
-      assertEquals(angle.radians, 0.523599);
-      assertEquals(height, 35786000.0);
-      // teardown
-   }
-
-   void calcGravityDirection_3_14()
-   {
-      // setup
-      Planet phys;
-      int x = 0;
-      int y = 42164000;
-
-      Angle d;
-      d.radians = 0.0;
-
-      // exercise
-      d = phys.calcGravityDirection(x, y);
-
-      // verify
-      assertEquals(d.radians, 3.14159);
+      assertEquals(a.ddx, -0.1122);
+      assertEquals(a.ddy, -0.1943);
       // teardown
    }
 };
