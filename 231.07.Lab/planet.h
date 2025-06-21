@@ -22,6 +22,8 @@ class Planet : public SpaceObject
 public:
 	Planet() { SpaceObject(); radius = 6378000.0; earthGravity = 9.80665; }
 
+	void draw(ogstream& gout) override { gout.drawEarth(pos, direction.getDegrees()); }
+
 	Acceleration calcGravity(Position posSatalite);
 
 private:

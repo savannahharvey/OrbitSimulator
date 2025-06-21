@@ -32,6 +32,8 @@ public:
    }
 
 private:
+
+   // calcGravity ...
    void calcGravity_98()
    {
       // setup
@@ -88,4 +90,7 @@ private:
       assertEquals(a.ddy, -0.1943);
       // teardown
    }
+
+   // calcGravityDirection ...
+
 };

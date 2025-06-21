@@ -26,8 +26,15 @@ class Simulator
 public:
    Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight)
    {
+      // time
+      time = 48.0;
+      
+      // Sputnik sputnik;
+      spaceObjects.push_back(new Sputnik());
+
       // Create 50 new stars with random positions
-      for (int i = 0; i < 50; i++)
+      Position ptStar;
+      for (int i = 0; i < 300; i++)
       {
          ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
          ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
@@ -40,29 +47,50 @@ public:
 
    void draw()
    {
-      Position pt;
-      ogstream gout(pt);
+      ogstream gout(ptUpperRight);
 
       // draw the stars
-      for (int i = 0; i < 50; i++)
+      for (int i = 0; i < 300; i++)
          starVect[i].draw(gout);
 
       // draw the earth
-      Position earthPos(0.0, 0.0);
-      rotationSpeed += -0.004; // arbitrary for now...
-      gout.drawEarth(earthPos, rotationSpeed);
+      earth.draw(gout);
+
+      // draw spaceObjects
+      for (SpaceObject* object : spaceObjects)
+      {
+         object->draw(gout);
+      }
+   }
+
+   void moveObjects()
+   {
+      for (SpaceObject* object : spaceObjects)
+      {
+         Acceleration gravity;
+         gravity = earth.calcGravity(object->getPosition());
+
+         object->move(time, gravity);
+      }
    }
 
    void run()
    {
       draw();
+
+      moveObjects();
    }
 
    Position ptUpperRight;
 
-   double rotationSpeed;
+   double time;
 
-   Position ptStar;
-   unsigned char phaseStar;
+   vector<SpaceObject*> spaceObjects;
+
+   // earth
+   double rotationSpeed;
+   Planet earth;
+
+   // stars
    vector<Star> starVect;
 };
