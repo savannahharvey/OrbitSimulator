@@ -10,7 +10,6 @@
 
 #pragma once
 
-#include "position.h"
 #include "SpaceObject.h"
 #include "unitTest.h"
 
@@ -42,6 +41,7 @@ public:
       test_getAge_not_zero();
       test_getStatus_living();
       test_getStatus_dead();
+      test_getDirection();
       
       report("Space Object");
    }
@@ -367,5 +367,21 @@ private:
       bool isDead = test.getStatus();
       // Verify
       assertEquals(isDead, true);
+   }  // Teardown
+   
+   
+   /*********************************************
+    * name:    TEST GET DIRECTION
+    * input:   direction = 20
+    * output:  ture
+    *********************************************/
+   void test_getDirection()
+   {  // Setup
+      SpaceObject test;
+      test.direction.radians = 20;
+      // Exercise
+      Angle angle = test.getDirection();
+      // Verify
+      assertEquals(angle.radians, 20);
    }  // Teardown
 };

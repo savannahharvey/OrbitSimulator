@@ -16,9 +16,9 @@
 #include "acceleration.h"
 #include "angle.h"
 
-
-class Position;
 class TestSpaceObject;
+class TestSatellite;
+class TestSputnik;
 
 /*********************************************
  * SPACE OBJECT
@@ -28,6 +28,8 @@ class SpaceObject
 {
 public:
    friend TestSpaceObject;
+   friend TestSatellite;
+   friend TestSputnik;
    
    // constructors
    SpaceObject(): pos(Position()), vel(Velocity()), direction(Angle()), radius(0), isDead(false), age(0) { }
@@ -45,6 +47,9 @@ public:
    // setters
    void move(double time, const Acceleration &gravity);
    void colided() { isDead = true; }
+   
+   // Draw
+   virtual void draw() {}
    
 protected:
    Position pos;
