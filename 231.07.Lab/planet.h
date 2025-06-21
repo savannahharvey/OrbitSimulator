@@ -9,6 +9,7 @@
 
 #pragma once
 
+#include "SpaceObject.h"
 #include "angle.h"
 #include "acceleration.h"
 #include <cmath>
@@ -16,12 +17,17 @@
  /************************************
   * PLANET
   ************************************/
-class Planet
+class Planet : public SpaceObject
 {
 public:
-	Planet() {}
+	Planet() { SpaceObject(); radius = 6378000.0; earthGravity = 9.80665; }
 
-	Acceleration calcGravity(double height, Angle a);
-	Angle calcGravityDirection(int x, int y);
+	Acceleration calcGravity(Position posSatalite);
+
+private:
+	double earthGravity;
+
+	Angle calcGravityDirection(double x, double y);
 	double calcHeight(double x, double y);
+	double calcMagnitude(double height);
 };

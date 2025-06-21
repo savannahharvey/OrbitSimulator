@@ -4,13 +4,59 @@
  *****************************************************************/
 
 #include <cassert>      // for ASSERT
+#include <vector>       // for starVect
 #include "uiInteract.h" // for INTERFACE
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
 #include "SpaceObject.h"
+#include "planet.h"
+#include "star.h"
 #include "test.h"
 using namespace std;
 
+
+/*************************************************************************
+ * Simulator
+ * Test structure to capture the LM that will move around the screen
+ *************************************************************************/
+class Simulator
+{
+public:
+   Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight)
+   {
+
+      // Create 50 new stars with random positions
+      for (int i = 0; i < 50; i++)
+      {
+         ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
+         ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
+
+         Star newStar;
+         newStar.reset(ptStar);
+         starVect.push_back(newStar);
+      }
+   }
+
+   void draw()
+   {
+      //
+      // draw everything
+      //
+
+      Position pt;
+      ogstream gout(pt);
+
+      // draw the stars
+      for (int i = 0; i < 50; i++)
+         starVect[i].draw(gout);
+   }
+
+   Position ptUpperRight;
+
+   Position ptStar;
+   unsigned char phaseStar;
+   vector<Star> starVect;
+};
 
 /*************************************
  * All the interesting work happens here, when
@@ -52,6 +98,12 @@ int main(int argc, char** argv)
       "Demo",   /* name on the window */
       ptUpperRight);
 
+   Planet earth;
+   Position pos;
+
+   pos.setMeters(-36515095.13, 21082000.0);
+
+   Acceleration gravity = earth.calcGravity(pos);
 
    return 0;
 }

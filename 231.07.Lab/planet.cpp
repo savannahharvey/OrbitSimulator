@@ -11,26 +11,43 @@
 
  /************************************
   * PLANET : CALC GRAVITY
+  * get acceleration from gravity
+  ************************************/
+Acceleration Planet::calcGravity(Position posSatalite)
+{
+	double x = posSatalite.getMetersX();
+	double y = posSatalite.getMetersY();
+
+	Acceleration gravity;
+
+	Angle gravityDirection = calcGravityDirection(x, y);
+	double magnitude = calcMagnitude(calcHeight(x, y));
+
+	gravity.set(gravityDirection, magnitude);
+
+	return gravity;
+}
+
+ /************************************
+  * PLANET : CALC MAGNITUDE
   *              r
   * g = g * ( ------- ) ^2
   *            r + h
   ************************************/
-Acceleration Planet::calcGravity(double height, Angle a)
+double Planet::calcMagnitude(double height)
 {
-	Acceleration gravity;
 	double gravityAccel;
 
-	gravityAccel = 9.80665 * (6378000 / (6378000 + height)) * (6378000 / (6378000 + height));
-	gravity.set(a, gravityAccel);
+	gravityAccel = earthGravity * (radius / (radius + height)) * (radius / (radius + height));
 
-	return gravity;
+	return gravityAccel;
 }
 
 /************************************
  * Planet : CALC GRAVITY DIRECTION
  * d = atan(xe - xs, ye - ys)
  ************************************/
-Angle Planet::calcGravityDirection(int x, int y)
+Angle Planet::calcGravityDirection(double x, double y)
 {
 	Angle gravityDirection;
 
@@ -46,6 +63,6 @@ Angle Planet::calcGravityDirection(int x, int y)
  ************************************/
 double Planet::calcHeight(double x, double y)
 {
-	double height = (sqrt((x * x) + (y * y))) - 6378000;
+	double height = (sqrt((x * x) + (y * y))) - radius;
 	return height;
 }
