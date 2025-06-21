@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "SpaceObject.h"
+#include "spaceObject.h"
 
 class TestSatellite;
 class TestSputnik;
