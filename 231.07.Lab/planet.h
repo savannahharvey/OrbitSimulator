@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "SpaceObject.h"
+#include "spaceObject.h"
 #include "angle.h"
 #include "acceleration.h"
 #include <cmath>

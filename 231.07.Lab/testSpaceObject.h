@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "SpaceObject.h"
+#include "spaceObject.h"
 #include "unitTest.h"
 
 /*******************************
