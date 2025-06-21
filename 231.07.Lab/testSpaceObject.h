@@ -31,6 +31,8 @@ public:
       test_move_geo_up();
       test_move_retro_angled();
       test_move_non_orbit();
+      test_addAge_zero();
+      test_addAge_limit();
       
       // Getters
       test_getPosition_zero();
@@ -154,9 +156,10 @@ private:
     *          vel=(3100.0, 0.0)
     *          acc=(0, 0.169298992)
     *          time=48
+    *          age = 0
     * output:  pos=(148800, -42163804.9676)
-    * y   double            -42163804.967561215
     *          vel=(3100.0, 8.126351616)
+    *          age = 1
     *********************************************/
    void test_move_geo_up()
    {  // Setup
@@ -165,6 +168,7 @@ private:
       s.pos.y = -42164000.0;
       s.vel.dx = 3100.0;
       s.vel.dy = 0.0;
+      s.age = 0;
       Acceleration gravity;
       gravity.ddx = 0.0;
       gravity.ddy = 0.169298992;
@@ -176,6 +180,7 @@ private:
       assertEquals(s.pos.y, -42163804.9676);
       assertEquals(s.vel.dx, 3100.0);
       assertEquals(s.vel.dy, 8.126351616);
+      assertEquals(s.age, 1);
    }  // Teardown
    
    
@@ -185,8 +190,10 @@ private:
     *          vel=(2050.0, 2684.68)
     *          acc=(0.1943286025942485, -0.11219567100418354)
     *          time=48
+    *          age = 35
     * output:  pos=(-36416471.26344, 21210735.39058)
     *          vel=(2059.327773, 2679.294608)
+    *          age = 36
     *********************************************/
    void test_move_retro_angled()
    {  // Setup
@@ -195,6 +202,7 @@ private:
       s.pos.y = 21082000.0;
       s.vel.dx = 2050.0;
       s.vel.dy = 2684.68;
+      s.age = 35;
       Acceleration gravity;
       gravity.ddx =  0.1943286025942485;
       gravity.ddy = -0.11219567100418354;
@@ -206,6 +214,7 @@ private:
       assertEquals(s.pos.y, 21210735.39058);
       assertEquals(s.vel.dx, 2059.327773);
       assertEquals(s.vel.dy, 2679.294608);
+      assertEquals(s.age, 36);
    }  // Teardown
    
    
@@ -215,8 +224,10 @@ private:
     *          vel=(5000.0, 5000.0)
     *          acc=(-0.22566525361795767, -0.22566525361795767)
     *          time=48
+    *          age = 10000
     * output:  pos=(25239740.03362783, 25239740.03362783)
     *          vel=(4989.168068, 4989.168068)
+    *          age = 0
     *********************************************/
    void test_move_non_orbit()
    {  // Setup
@@ -225,6 +236,7 @@ private:
       s.pos.y = 25000000.0;
       s.vel.dx = 5000.0;
       s.vel.dy = 5000.0;
+      s.age = 10000;
       Acceleration gravity;
       gravity.ddx = -0.22566525361795767;
       gravity.ddy = -0.22566525361795767;
@@ -236,6 +248,39 @@ private:
       assertEquals(s.pos.y, 25239740.03362783);
       assertEquals(s.vel.dx, 4989.168068);
       assertEquals(s.vel.dy, 4989.168068);
+      assertEquals(s.age, 0);
+   }  // Teardown
+   
+   
+   /*********************************************
+    * name:    TEST ADD AGE : ZERO
+    * input:   age = 0
+    * output:  age = 1
+    *********************************************/
+   void test_addAge_zero()
+   {  // Setup
+      SpaceObject test;
+      test.age = 0;
+      // Exercise
+      test.addAge();
+      // Verify
+      assertEquals(test.age, 1);
+   }  // Teardown
+   
+   
+   /*********************************************
+    * name:    TEST ADD AGE : LIMIT
+    * input:   age = 10000
+    * output:  age = 0
+    *********************************************/
+   void test_addAge_limit()
+   {  // Setup
+      SpaceObject test;
+      test.age = 10000;
+      // Exercise
+      test.addAge();
+      // Verify
+      assertEquals(test.age, 0);
    }  // Teardown
    
    

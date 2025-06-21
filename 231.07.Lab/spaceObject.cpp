@@ -21,4 +21,20 @@ void SpaceObject::move(double time, const Acceleration &gravity)
    pos.setMeters(posX, posY);
    
    vel.add(gravity, time);
+   
+   this->addAge();
+}
+
+
+/**********************************
+ * SPACE OBJECT : ADD AGE
+ * Add to the age of an object.
+ * If we are at 10000 or more we can rest
+ **********************************/
+void SpaceObject::addAge()
+{
+   if (this->age < 10000)
+      this->age ++;
+   else
+      this->age = 0;
 }

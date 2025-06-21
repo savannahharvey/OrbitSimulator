@@ -60,4 +60,6 @@ protected:
    bool isDead;
    int age;
    
+private:
+   void addAge();
 };
