@@ -1,10 +1,10 @@
 /***********************************************************************
  * Header File:
- *    Test spaceObject : Test the spaceObject class
+ *    Test Sputnik : Test the Sputnik class
  * Author:
  *    McKay Larman
  * Summary:
- *    All the unit tests for parent class spaceObject
+ *    All the unit tests for parent class Sputnik
  ************************************************************************/
 
 
@@ -14,8 +14,8 @@
 #include "unitTest.h"
 
 /*******************************
- * TEST spaceObject
- * A friend class for spaceObject which contains the spcaeObject unit tests
+ * TEST SPUTNIK
+ * A friend class for Sputnik which contains the Sputnik Unit test
  ********************************/
 class TestSputnik : public UnitTest
 {

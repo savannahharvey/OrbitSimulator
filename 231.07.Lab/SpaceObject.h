@@ -15,6 +15,7 @@
 #include "velocity.h"
 #include "acceleration.h"
 #include "angle.h"
+#include "uiDraw.h"
 
 class TestSpaceObject;
 class TestSatellite;
@@ -49,7 +50,7 @@ public:
    void colided() { isDead = true; }
    
    // Draw
-   virtual void draw() {}
+   virtual void draw(ogstream& gout) {}
    
 protected:
    Position pos;

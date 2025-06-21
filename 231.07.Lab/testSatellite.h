@@ -1,10 +1,10 @@
 /***********************************************************************
  * Header File:
- *    Test spaceObject : Test the spaceObject class
+ *    Test Satellite : Test the Satellite class
  * Author:
  *    McKay Larman
  * Summary:
- *    All the unit tests for parent class spaceObject
+ *    All the unit tests for parent class Satellite
  ************************************************************************/
 
 
@@ -14,8 +14,8 @@
 #include "unitTest.h"
 
 /*******************************
- * TEST spaceObject
- * A friend class for spaceObject which contains the spcaeObject unit tests
+ * TEST SATELLITE
+ * A friend class for Satellite which contains the Satellite unit tests
  ********************************/
 class TestSatellite : public UnitTest
 {

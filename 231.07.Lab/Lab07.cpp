@@ -9,6 +9,7 @@
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
 #include "SpaceObject.h"
+#include "sputnik.h"
 #include "planet.h"
 #include "star.h"
 #include "test.h"

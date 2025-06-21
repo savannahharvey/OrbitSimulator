@@ -29,5 +29,5 @@ public:
    }
    
    // Draw
-   void draw() override {}
+   void draw(ogstream& gout) override { gout.drawSputnik(pos, direction.getDegrees()); }
 };
