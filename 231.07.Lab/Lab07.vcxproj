@@ -155,6 +155,7 @@
     <ClInclude Include="angle.h" />
     <ClInclude Include="planet.h" />
     <ClInclude Include="position.h" />
+    <ClInclude Include="simulator.h" />
     <ClInclude Include="SpaceObject.h" />
     <ClInclude Include="star.h" />
     <ClInclude Include="test.h" />

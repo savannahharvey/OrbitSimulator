@@ -12,59 +12,10 @@
 #include "sputnik.h"
 #include "planet.h"
 #include "star.h"
+#include "simulator.h"
 #include "test.h"
 using namespace std;
 
-
-/*************************************************************************
- * Simulator
- * Test structure to capture the LM that will move around the screen
- *************************************************************************/
-class Simulator
-{
-public:
-   Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight)
-   {
-
-      // Create 50 new stars with random positions
-      for (int i = 0; i < 50; i++)
-      {
-         ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
-         ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
-
-         Star newStar;
-         newStar.reset(ptStar);
-         starVect.push_back(newStar);
-      }
-   }
-
-   void draw()
-   {
-      //
-      // draw everything
-      //
-
-      Position pt;
-      ogstream gout(pt);
-
-      // draw the stars
-      for (int i = 0; i < 50; i++)
-         starVect[i].draw(gout);
-
-      // draw the earth
-      Position earthPos(0.0, 0.0);
-      rotationSpeed+= -0.004; // arbitrary for now...
-      gout.drawEarth(earthPos, rotationSpeed);
-   }
-
-   Position ptUpperRight;
-
-   double rotationSpeed;
-
-   Position ptStar;
-   unsigned char phaseStar;
-   vector<Star> starVect;
-};
 
 /*************************************
  * All the interesting work happens here, when
@@ -79,7 +30,7 @@ void callBack(const Interface* pUI, void* p)
    // is the first step of every single callback function in OpenGL. 
    Simulator* pSim = (Simulator*)p;
 
-   pSim->draw();
+   pSim->run();
 }
 
 double Position::metersFromPixels = 40.0;
