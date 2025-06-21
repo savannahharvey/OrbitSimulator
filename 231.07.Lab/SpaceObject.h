@@ -9,7 +9,8 @@
 
 #include <iostream>
 #include <cmath>
-#include "position.h" 
+#include "position.h"
+
 
 class Position;
 class Acceleration;
@@ -40,6 +41,7 @@ public:
    
 protected:
    Position pos;
+//   Velocity vel;
    double radius;
    bool isDead;
    int age;

@@ -109,10 +109,34 @@ private:
     * name:    TEST MOVE GEO UP
     * input:   pos=(0, -42164000.0)
     *          vel=(3100.0, 0.0)
-    *          acc=(0, 9.8)
-    * output:  pos=(0, 0), ??
+    *          acc=(0, 0.169298992)
+    *          time=48
+    * output:  pos=(148800, -42163804.9676)
+    *          vel=(3100.0, 9.12635163856)
     *********************************************/
    void test_move_geo_up()
+   {  // Setup
+      SpaceObject s;
+      s.pos.x = 0.0;
+      s.pos.y = -42164000.0;
+//      s.vel.dx = 3100.0;
+//      s.vel.dy = 0.0;
+      // Exercise
+      
+      // Verify
+      
+   }  // Teardown
+   
+   
+   /*********************************************
+    * name:    TEST MOVE RETRO ANGLED
+    * input:   pos=(-36515095.13, 21082000.0)
+    *          vel=(2050.0, 2684.68)
+    *          time=48
+    * output:  pos=(-36416471.26, 21210735.39)
+    *          vel=(2059.327773, 2679.294608)
+    *********************************************/
+   void test_move_retro_angled()
    {  // Setup
       
       // Exercise
