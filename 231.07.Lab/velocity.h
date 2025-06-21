@@ -14,7 +14,7 @@
 class TestPosition;
 class TestVelocity;
 class TestAcceleration;
-class TestLander;
+class TestSpaceObject;
 
 // for add()
 class Acceleration;
@@ -29,7 +29,7 @@ class Velocity
    // for unit tests
    friend TestPosition;
    friend TestVelocity;
-   friend TestLander;
+   friend TestSpaceObject;
 
 public:
    // constructors

@@ -26,9 +26,12 @@ public:
       // Constructors
       construct_default();
       construct_copy();
+      construct_pos_vel();
       
       // Setters
       test_move_geo_up();
+      test_move_retro_angled();
+      test_move_non_orbit();
       
       // Getters
       test_getPosition_zero();
@@ -62,11 +65,14 @@ private:
       // Verify
       assertEquals(test.pos.x, 0);
       assertEquals(test.pos.y, 0);
-//      assertEquals(test.direction, 10);
+      assertEquals(test.vel.dx, 0);
+      assertEquals(test.vel.dy, 0);
+      assertEquals(test.direction.radians, 0);
       assertEquals(test.radius, 0);
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
    }  // Teardown
+   
    
    /*********************************************
     * name:    COPY CONSTRUCTOR
@@ -89,7 +95,9 @@ private:
       SpaceObject rhs;
       rhs.pos.x = 70000;
       rhs.pos.y = 10000;
-//      rhs.direction = 10;
+      rhs.vel.dx = 45;
+      rhs.vel.dy = 45;
+      rhs.direction.radians = 10;
       rhs.radius = 10;
       rhs.isDead = false;
       rhs.age = 5;
@@ -98,10 +106,45 @@ private:
       // Verify
       assertEquals(test.pos.x, 70000);
       assertEquals(test.pos.y, 10000);
-//      assertEquals(test.direction, 10);
+      assertEquals(test.vel.dx, 45);
+      assertEquals(test.vel.dy, 45);
+      assertEquals(test.direction.radians, 10);
       assertEquals(test.radius, 10);
       assertEquals(test.isDead, false);
       assertEquals(test.age, 5);
+   }  // Teardown
+   
+   
+   /*********************************************
+    * name:    CONSTRUCTOR WITH POSITION AND VELOCITY
+    * input:   pos=(50000,-50000)
+    *          vel=(100, -100)
+    * output:  pos=(50000,-50000)
+    *          vel=(100, -100)
+    *          direction=(0)
+    *          radius = 0
+    *          isDead = false
+    *          age = 0
+    *********************************************/
+   void construct_pos_vel()
+   {  // Setup
+      Position p;
+      p.x =  50000;
+      p.y = -50000;
+      Velocity v;
+      v.dx =  100;
+      v.dy = -100;
+      // Exercise
+      SpaceObject test(p, v);
+      // Verify
+      assertEquals(test.pos.x,  50000);
+      assertEquals(test.pos.y, -50000);
+      assertEquals(test.vel.dx,  100);
+      assertEquals(test.vel.dy, -100);
+      assertEquals(test.direction.radians, 0);
+      assertEquals(test.radius, 0);
+      assertEquals(test.isDead, false);
+      assertEquals(test.age, 0);
    }  // Teardown
    
    
@@ -112,19 +155,27 @@ private:
     *          acc=(0, 0.169298992)
     *          time=48
     * output:  pos=(148800, -42163804.9676)
-    *          vel=(3100.0, 9.12635163856)
+    * y   double            -42163804.967561215
+    *          vel=(3100.0, 8.126351616)
     *********************************************/
    void test_move_geo_up()
    {  // Setup
       SpaceObject s;
       s.pos.x = 0.0;
       s.pos.y = -42164000.0;
-//      s.vel.dx = 3100.0;
-//      s.vel.dy = 0.0;
+      s.vel.dx = 3100.0;
+      s.vel.dy = 0.0;
+      Acceleration gravity;
+      gravity.ddx = 0.0;
+      gravity.ddy = 0.169298992;
+      double t = 48;
       // Exercise
-      
+      s.move(t, gravity);
       // Verify
-      
+      assertEquals(s.pos.x, 148800);
+      assertEquals(s.pos.y, -42163804.9676);
+      assertEquals(s.vel.dx, 3100.0);
+      assertEquals(s.vel.dy, 8.126351616);
    }  // Teardown
    
    
@@ -132,17 +183,59 @@ private:
     * name:    TEST MOVE RETRO ANGLED
     * input:   pos=(-36515095.13, 21082000.0)
     *          vel=(2050.0, 2684.68)
+    *          acc=(0.1943286025942485, -0.11219567100418354)
     *          time=48
-    * output:  pos=(-36416471.26, 21210735.39)
+    * output:  pos=(-36416471.26344, 21210735.39058)
     *          vel=(2059.327773, 2679.294608)
     *********************************************/
    void test_move_retro_angled()
    {  // Setup
-      
+      SpaceObject s;
+      s.pos.x = -36515095.13;
+      s.pos.y = 21082000.0;
+      s.vel.dx = 2050.0;
+      s.vel.dy = 2684.68;
+      Acceleration gravity;
+      gravity.ddx =  0.1943286025942485;
+      gravity.ddy = -0.11219567100418354;
+      double t = 48;
       // Exercise
-      
+      s.move(t, gravity);
       // Verify
-      
+      assertEquals(s.pos.x, -36416471.26344);
+      assertEquals(s.pos.y, 21210735.39058);
+      assertEquals(s.vel.dx, 2059.327773);
+      assertEquals(s.vel.dy, 2679.294608);
+   }  // Teardown
+   
+   
+   /*********************************************
+    * name:    TEST MOVE NON ORBIT
+    * input:   pos=(25000000.0, 25000000.0)
+    *          vel=(5000.0, 5000.0)
+    *          acc=(-0.22566525361795767, -0.22566525361795767)
+    *          time=48
+    * output:  pos=(25239740.03362783, 25239740.03362783)
+    *          vel=(4989.168068, 4989.168068)
+    *********************************************/
+   void test_move_non_orbit()
+   {  // Setup
+      SpaceObject s;
+      s.pos.x = 25000000.0;
+      s.pos.y = 25000000.0;
+      s.vel.dx = 5000.0;
+      s.vel.dy = 5000.0;
+      Acceleration gravity;
+      gravity.ddx = -0.22566525361795767;
+      gravity.ddy = -0.22566525361795767;
+      double t = 48;
+      // Exercise
+      s.move(t, gravity);
+      // Verify
+      assertEquals(s.pos.x, 25239740.03362783);
+      assertEquals(s.pos.y, 25239740.03362783);
+      assertEquals(s.vel.dx, 4989.168068);
+      assertEquals(s.vel.dy, 4989.168068);
    }  // Teardown
    
    

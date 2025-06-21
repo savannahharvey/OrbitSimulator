@@ -15,6 +15,7 @@ class TestAcceleration;
 class TestVelocity;
 class TestPosition;
 class TestPlanet;
+class TestSpaceObject;
 
 class Angle;
 
@@ -29,6 +30,7 @@ class Acceleration
    friend TestVelocity;
    friend TestAcceleration;
    friend TestPlanet;
+   friend TestSpaceObject;
 
 private:
    double ddx;     // horizontal acceleration

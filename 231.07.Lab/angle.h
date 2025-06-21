@@ -19,6 +19,7 @@ class TestVelocity;
 class TestAcceleration;
 class TestAngle;
 class TestPlanet;
+class TestSpaceObject;
 
 /************************************
  * ANGLE
@@ -45,6 +46,7 @@ public:
    friend TestVelocity;
    friend TestAngle;
    friend TestPlanet;
+   friend TestSpaceObject;
 
    // Constructors
    Angle() : radians(0.0) {}

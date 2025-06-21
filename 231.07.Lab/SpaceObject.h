@@ -1,19 +1,23 @@
-//
-//  spaceObject.h
-//  Lab07
-//
-//  Created by Mckay Larman on 6/19/25.
-//
+/***********************************************************************
+ * Header File:
+ *    SpaceObject : Anything that is in space and could move
+ * Author:
+ *    McKay Larman
+ * Summary:
+ *    Everything that we need to make objects move in space
+ ************************************************************************/
 
 #pragma once
 
 #include <iostream>
 #include <cmath>
 #include "position.h"
+#include "velocity.h"
+#include "acceleration.h"
+#include "angle.h"
 
 
 class Position;
-class Acceleration;
 class TestSpaceObject;
 
 /*********************************************
@@ -26,22 +30,26 @@ public:
    friend TestSpaceObject;
    
    // constructors
-   SpaceObject(): pos(Position()), radius(0), isDead(false), age(0) { }
-   SpaceObject(SpaceObject &rhs) : pos(rhs.pos), radius(rhs.radius), isDead(rhs.isDead), age(rhs.age) {}
+   SpaceObject(): pos(Position()), vel(Velocity()), direction(Angle()), radius(0), isDead(false), age(0) { }
+   SpaceObject(SpaceObject &rhs) : pos(rhs.pos), vel(rhs.vel), direction(rhs.direction),
+                                   radius(rhs.radius), isDead(rhs.isDead), age(rhs.age) {}
+   SpaceObject(Position position, Velocity velocity) : SpaceObject() { pos = position; vel = velocity; }
    
    // getters
    Position getPosition()  const { return pos; }
    double getRadius()      const { return radius; }
    bool getStatus()        const { return isDead; }
    int getAge()            const { return age; }
+   Angle getDirection()    const { return direction; }
    
    // setters
-//   void move(double time, Acceleration gravity) {}
+   void move(double time, const Acceleration &gravity);
    void colided() { isDead = true; }
    
 protected:
    Position pos;
-//   Velocity vel;
+   Velocity vel;
+   Angle direction;
    double radius;
    bool isDead;
    int age;
