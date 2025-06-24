@@ -36,7 +36,7 @@ public:
    SpaceObject(): pos(Position()), vel(Velocity()), direction(Angle()), radius(0), isDead(false), age(0) { }
    SpaceObject(SpaceObject &rhs) : pos(rhs.pos), vel(rhs.vel), direction(rhs.direction),
                                    radius(rhs.radius), isDead(rhs.isDead), age(rhs.age) {}
-   SpaceObject(Position position, Velocity velocity) : SpaceObject() { pos = position; vel = velocity; }
+   SpaceObject(Position &position, Velocity &velocity) : SpaceObject() { pos = position; vel = velocity; }
    
    // getters
    Position getPosition()  const { return pos; }

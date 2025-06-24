@@ -169,9 +169,7 @@ private:
       s.vel.dx = 3100.0;
       s.vel.dy = 0.0;
       s.age = 0;
-      Acceleration gravity;
-      gravity.ddx = 0.0;
-      gravity.ddy = 0.169298992;
+      GeoUp gravity;
       double t = 48;
       // Exercise
       s.move(t, gravity);
@@ -203,9 +201,7 @@ private:
       s.vel.dx = 2050.0;
       s.vel.dy = 2684.68;
       s.age = 35;
-      Acceleration gravity;
-      gravity.ddx =  0.1943286025942485;
-      gravity.ddy = -0.11219567100418354;
+      RetroAngle gravity;
       double t = 48;
       // Exercise
       s.move(t, gravity);
@@ -237,9 +233,7 @@ private:
       s.vel.dx = 5000.0;
       s.vel.dy = 5000.0;
       s.age = 10000;
-      Acceleration gravity;
-      gravity.ddx = -0.22566525361795767;
-      gravity.ddy = -0.22566525361795767;
+      NonOrbit gravity;
       double t = 48;
       // Exercise
       s.move(t, gravity);

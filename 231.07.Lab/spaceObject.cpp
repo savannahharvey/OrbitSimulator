@@ -7,7 +7,7 @@
  *    Everything that we need to make objects move in space
  ************************************************************************/
 
-#include "SpaceObject.h"
+#include "spaceObject.h"
 
 /**********************************
  * SPACE OBJECT : MOVE
