@@ -169,10 +169,9 @@ private:
       s.vel.dx = 3100.0;
       s.vel.dy = 0.0;
       s.age = 0;
-      GeoUp gravity;
       double t = 48;
       // Exercise
-      s.move(t, gravity);
+      s.move(t, GeoUp());
       // Verify
       assertEquals(s.pos.x, 148800);
       assertEquals(s.pos.y, -42163804.9676);
@@ -201,10 +200,9 @@ private:
       s.vel.dx = 2050.0;
       s.vel.dy = 2684.68;
       s.age = 35;
-      RetroAngle gravity;
       double t = 48;
       // Exercise
-      s.move(t, gravity);
+      s.move(t, RetroAngle());
       // Verify
       assertEquals(s.pos.x, -36416471.26344);
       assertEquals(s.pos.y, 21210735.39058);
@@ -233,10 +231,9 @@ private:
       s.vel.dx = 5000.0;
       s.vel.dy = 5000.0;
       s.age = 10000;
-      NonOrbit gravity;
       double t = 48;
       // Exercise
-      s.move(t, gravity);
+      s.move(t, NonOrbit());
       // Verify
       assertEquals(s.pos.x, 25239740.03362783);
       assertEquals(s.pos.y, 25239740.03362783);

@@ -16,6 +16,7 @@
 #include "acceleration.h"
 #include "angle.h"
 #include "uiDraw.h"
+#include "uiInteract.h"
 
 class TestSpaceObject;
 class TestSatellite;
@@ -35,9 +36,9 @@ public:
    // constructors
    SpaceObject(): pos(Position()), vel(Velocity()), direction(Angle()), angularMomentum(0),
                                                          radius(0), isDead(false), age(0) { }
-   SpaceObject(SpaceObject &rhs) : pos(rhs.pos), vel(rhs.vel), direction(rhs.direction), angularMomentum(rhs.angularMomentum),
+   SpaceObject(const SpaceObject &rhs) : pos(rhs.pos), vel(rhs.vel), direction(rhs.direction), angularMomentum(rhs.angularMomentum),
                                    radius(rhs.radius), isDead(rhs.isDead), age(rhs.age) {}
-   SpaceObject(Position &position, Velocity &velocity) : SpaceObject() { pos = position; vel = velocity; }
+   SpaceObject(const Position &position, const Velocity &velocity) : SpaceObject() { pos = position; vel = velocity; }
    
    // getters
    Position getPosition()  const { return pos; }
@@ -50,6 +51,9 @@ public:
    void move(double time, const Acceleration &gravity);
    void colided() { isDead = true; }
    void spin() { direction.add(angularMomentum);  }
+   
+   // handle user intput (Mostly for dreamChaser).
+   virtual void input(const Interface & ui, vector<SpaceObject> &spaceObjects) {}
    
    // Draw
    virtual void draw(ogstream& gout) {}
