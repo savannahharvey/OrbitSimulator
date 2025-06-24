@@ -72,6 +72,7 @@ public:
 
          object->move(time, gravity);
       }
+      earth.spin();
    }
 
    void run()
@@ -88,7 +89,6 @@ public:
    vector<SpaceObject*> spaceObjects;
 
    // earth
-   double rotationSpeed;
    Planet earth;
 
    // stars

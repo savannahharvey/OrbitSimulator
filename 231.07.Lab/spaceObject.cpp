@@ -23,6 +23,7 @@ void SpaceObject::move(double time, const Acceleration &gravity)
    vel.add(gravity, time);
    
    this->addAge();
+   this->spin();
 }
 
 

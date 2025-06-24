@@ -24,6 +24,7 @@ public:
       this->pos.setMeters(-36515095.13, 21082000.0);
       this->vel.setDX(2050.0);
       this->vel.setDY(2684.68);
+      this->angularMomentum = 0.0002;
       this->radius = 4;
       this->fragments = 4;
    }

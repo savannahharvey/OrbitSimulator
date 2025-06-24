@@ -33,8 +33,9 @@ public:
    friend TestSputnik;
    
    // constructors
-   SpaceObject(): pos(Position()), vel(Velocity()), direction(Angle()), radius(0), isDead(false), age(0) { }
-   SpaceObject(SpaceObject &rhs) : pos(rhs.pos), vel(rhs.vel), direction(rhs.direction),
+   SpaceObject(): pos(Position()), vel(Velocity()), direction(Angle()), angularMomentum(0),
+                                                         radius(0), isDead(false), age(0) { }
+   SpaceObject(SpaceObject &rhs) : pos(rhs.pos), vel(rhs.vel), direction(rhs.direction), angularMomentum(rhs.angularMomentum),
                                    radius(rhs.radius), isDead(rhs.isDead), age(rhs.age) {}
    SpaceObject(Position &position, Velocity &velocity) : SpaceObject() { pos = position; vel = velocity; }
    
@@ -48,6 +49,7 @@ public:
    // setters
    void move(double time, const Acceleration &gravity);
    void colided() { isDead = true; }
+   void spin() { direction.add(angularMomentum);  }
    
    // Draw
    virtual void draw(ogstream& gout) {}
@@ -56,6 +58,7 @@ protected:
    Position pos;
    Velocity vel;
    Angle direction;
+   double angularMomentum;
    double radius;
    bool isDead;
    int age;

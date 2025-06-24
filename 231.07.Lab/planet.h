@@ -20,7 +20,13 @@
 class Planet : public SpaceObject
 {
 public:
-	Planet() { SpaceObject(); radius = 6378000.0; earthGravity = 9.80665; }
+   Planet() : SpaceObject()
+   {
+      radius = 6378000.0;
+      earthGravity = 9.80665;
+      double td = 24.0 * 60.0;
+      angularMomentum = -(2.0 * M_PI / 30.0) * (td / 86400.0 );
+   }
 
 	void draw(ogstream& gout) override { gout.drawEarth(pos, direction.getDegrees()); }
 
