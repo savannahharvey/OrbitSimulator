@@ -9,6 +9,7 @@
 
 #include "test.h"
 #include "testPosition.h"
+#include "testVelocity.h"
 #include "testSpaceObject.h"
 #include "testPlanet.h"
 #include "testSatellite.h"
@@ -34,6 +35,7 @@ void testRunner()
 #endif // _WIN32
 
    TestPosition().run();
+   TestVelocity().run();
    TestSpaceObject().run();
    TestPlanet().run();
    TestSatellite().run();
