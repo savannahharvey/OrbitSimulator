@@ -14,6 +14,8 @@
 #include "spaceObject.h"
 #include "dreamChaser.h"
 #include "sputnik.h"
+#include "dragon.h"
+#include "starlink.h"
 #include "planet.h"
 #include "star.h"
 

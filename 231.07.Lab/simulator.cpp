@@ -17,10 +17,17 @@ Simulator::Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight)
    // time
    time = 48.0;
    
+   // Dream Chaser
    spaceObjects.push_back(new DreamChaser());
 
-   // Sputnik sputnik;
+   // Sputnik
    spaceObjects.push_back(new Sputnik());
+   
+   // Crew Dragon
+   spaceObjects.push_back(new Dragon());
+   
+   // Starlink
+   spaceObjects.push_back(new Starlink());
 
    // Create 50 new stars with random positions
    Position ptStar;
