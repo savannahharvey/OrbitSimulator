@@ -19,7 +19,8 @@ Simulator::Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight)
    
    // Dream Chaser
    spaceObjects.push_back(new DreamChaser());
-   spaceObjects.push_back(new Sputnik());
+
+   // Hubble
    spaceObjects.push_back(new Hubble());
 
    // Sputnik

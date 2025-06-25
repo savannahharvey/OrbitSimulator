@@ -12,11 +12,13 @@
 #include "satellite.h"
 
 class TestSatellite;
+class TestHubble;
 
 class Hubble : public Satellite
 {
 public:
    friend TestSatellite;
+   friend TestHubble;
 
    // Constructors
    Hubble() : Satellite()

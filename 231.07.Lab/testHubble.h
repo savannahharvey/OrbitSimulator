@@ -47,17 +47,18 @@ private:
 
       // Exercise
       Hubble test;
+
       // Verify
       assertEquals(test.pos.x, 0.0);
       assertEquals(test.pos.y, -42164000.0);
       assertEquals(test.vel.dx, 3100.0);
       assertEquals(test.vel.dy, 0.0);
       assertEquals(test.direction.radians, 0);
-      assertEquals(test.radius, 4);
+      assertEquals(test.radius, 10);
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
       assertEquals(test.isOrbiting, true);
-      assertEquals(test.parts, 0);
-      assertEquals(test.fragments, 4);
+      assertEquals(test.parts, 4);
+      assertEquals(test.fragments, 2);
    }  // Teardown
 };

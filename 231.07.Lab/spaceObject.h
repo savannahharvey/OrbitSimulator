@@ -23,6 +23,7 @@ class TestSpaceObject;
 class TestDreamChaser;
 class TestSatellite;
 class TestSputnik;
+class TestHubble;
 class TestDragon;
 
 /*********************************************
@@ -36,6 +37,7 @@ public:
    friend TestDreamChaser;
    friend TestSatellite;
    friend TestSputnik;
+   friend TestHubble;
    friend TestDragon;
    
    // constructors

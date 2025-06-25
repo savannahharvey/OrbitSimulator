@@ -18,6 +18,7 @@ class TestSpaceObject;
 class TestDreamChaser;
 class TestSatellite;
 class TestSputnik;
+class TestHubble;
 class TestDragon;
 class TestStarlink;
 
@@ -38,6 +39,7 @@ class Velocity
    friend TestDreamChaser;
    friend TestSatellite;
    friend TestSputnik;
+   friend TestHubble;
    friend TestDragon;
    friend TestStarlink;
 
