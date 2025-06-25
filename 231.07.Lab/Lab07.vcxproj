@@ -156,6 +156,7 @@
     <ClInclude Include="acceleration.h" />
     <ClInclude Include="angle.h" />
     <ClInclude Include="dreamChaser.h" />
+    <ClInclude Include="GPS.h" />
     <ClInclude Include="hubble.h" />
     <ClInclude Include="planet.h" />
     <ClInclude Include="position.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="sputnik.h" />
     <ClInclude Include="star.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="testGPS.h" />
     <ClInclude Include="testHubble.h" />
     <ClInclude Include="testPlanet.h" />
     <ClInclude Include="testPosition.h" />

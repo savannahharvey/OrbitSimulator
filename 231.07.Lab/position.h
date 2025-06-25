@@ -21,6 +21,7 @@ class TestDreamChaser;
 class TestSatellite;
 class TestSputnik;
 class TestHubble;
+class TestGPS;
 class TestDragon;
 class TestStarlink;
 class Acceleration;
@@ -41,6 +42,7 @@ public:
    friend TestSatellite;
    friend TestSputnik;
    friend TestHubble;
+   friend TestGPS;
    friend TestDragon;
    friend TestStarlink;
    

@@ -17,6 +17,7 @@
 #include "dragon.h"
 #include "starlink.h"
 #include "hubble.h"
+#include "GPS.h"
 #include "planet.h"
 #include "star.h"
 

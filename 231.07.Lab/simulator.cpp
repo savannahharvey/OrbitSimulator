@@ -32,7 +32,13 @@ Simulator::Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight)
    // Starlink
    spaceObjects.push_back(new Starlink());
 
-	//spaceObjects.push_back(new GPS());
+   // GPSes
+	spaceObjects.push_back(new GPS(         0.0,  26560000.0, -3880.0,      0.0, M_PI * ( 1.0/2.0) ));
+   spaceObjects.push_back(new GPS(23001634.72,   13280000.0, -1940.0,  3360.18, M_PI * ( 5.0/6.0) ));
+   spaceObjects.push_back(new GPS( 23001634.72, -13280000.0,  1940.0,  3360.18, M_PI * ( 7.0/6.0) ));
+   spaceObjects.push_back(new GPS(         0.0, -26560000.0,  3880.0,      0.0, M_PI * ( 3.0/2.0) ));
+   spaceObjects.push_back(new GPS(-23001634.72, -13280000.0,  1940.0, -3360.18, M_PI * (11.0/6.0) ));
+   spaceObjects.push_back(new GPS(-23001634.72,  13280000.0, -1940.0, -3360.18, M_PI * ( 1.0/6.0) ));
 
    // Create 50 new stars with random positions
    Position ptStar;
