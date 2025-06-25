@@ -19,6 +19,7 @@ class TestSpaceObject;
 class TestPlanet;
 class TestSatellite;
 class TestSputnik;
+
 class Acceleration;
 class Velocity;
 

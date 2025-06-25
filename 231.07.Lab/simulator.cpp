@@ -18,9 +18,10 @@ Simulator::Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight)
    time = 48.0;
    
    spaceObjects.push_back(new DreamChaser());
-
-   // Sputnik sputnik;
    spaceObjects.push_back(new Sputnik());
+   spaceObjects.push_back(new Hubble());
+
+	//spaceObjects.push_back(new GPS());
 
    // Create 50 new stars with random positions
    Position ptStar;
