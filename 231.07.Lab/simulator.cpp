@@ -16,6 +16,8 @@ Simulator::Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight)
 {
    // time
    time = 48.0;
+   
+   spaceObjects.push_back(new DreamChaser());
 
    // Sputnik sputnik;
    spaceObjects.push_back(new Sputnik());
@@ -57,24 +59,30 @@ void Simulator::draw()
 /**********************************
 * SIMULATOR : MOVE OBJECTS
 **********************************/
-void Simulator::moveObjects()
+void Simulator::moveObjects(const Interface & ui)
 {
-   for (SpaceObject* object : spaceObjects)
+   if (spaceObjects.size() > 0)
    {
-      Acceleration gravity;
-      gravity = earth.calcGravity(object->getPosition());
+      // dream chaser should be first in the list.
+      spaceObjects[0]->input(ui, spaceObjects);
+      for (SpaceObject* object : spaceObjects)
+      {
+         Acceleration gravity;
+         gravity = earth.calcGravity(object->getPosition());
 
-      object->move(time, gravity);
+         object->move(time, gravity);
+      }
    }
+   
    earth.spin();
 }
 
 /**********************************
 * SIMULATOR : RUN
 **********************************/
-void Simulator::run()
+void Simulator::run(const Interface & ui)
 {
    draw();
 
-   moveObjects();
+   moveObjects(ui);
 }

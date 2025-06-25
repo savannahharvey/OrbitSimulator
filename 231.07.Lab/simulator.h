@@ -12,6 +12,7 @@
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
 #include "spaceObject.h"
+#include "dreamChaser.h"
 #include "sputnik.h"
 #include "planet.h"
 #include "star.h"
@@ -28,8 +29,8 @@ public:
    Simulator(Position ptUpperRight);
    
    void draw();
-   void moveObjects();
-   void run();
+   void moveObjects(const Interface & ui);
+   void run(const Interface & ui);
   
    double time;
 

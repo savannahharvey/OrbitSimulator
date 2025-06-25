@@ -48,12 +48,12 @@ public:
    Angle getDirection()    const { return direction; }
    
    // setters
-   void move(double time, const Acceleration &gravity);
+   virtual void move(double time, Acceleration &gravity);
    void colided() { isDead = true; }
    void spin() { direction.add(angularMomentum);  }
    
    // handle user intput (Mostly for dreamChaser).
-   virtual void input(const Interface & ui, vector<SpaceObject> &spaceObjects) {}
+   virtual void input(const Interface & ui, vector<SpaceObject*> &spaceObjects) {}
    
    // Draw
    virtual void draw(ogstream& gout) {}
@@ -67,6 +67,5 @@ protected:
    bool isDead;
    int age;
    
-private:
    void addAge();
 };

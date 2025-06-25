@@ -14,7 +14,7 @@
  * Move an object in space given an amount of time
  * and a force of gravity
  **********************************/
-void SpaceObject::move(double time, const Acceleration &gravity)
+void SpaceObject::move(double time, Acceleration &gravity)
 {
    double posX = pos.getMetersX() + (vel.getDX() * time) + (0.5 * gravity.getDDX() * (time * time));
    double posY = pos.getMetersY() + (vel.getDY() * time) + (0.5 * gravity.getDDY() * (time * time));
