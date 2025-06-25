@@ -12,8 +12,11 @@
 #include "testVelocity.h"
 #include "testSpaceObject.h"
 #include "testPlanet.h"
+#include "testDreamChaser.h"
 #include "testSatellite.h"
 #include "testSputnik.h"
+#include "testDragon.h"
+#include "testStarlink.h"
 #include "testHubble.h"
 
 #ifdef _WIN32
@@ -39,7 +42,10 @@ void testRunner()
    TestVelocity().run();
    TestSpaceObject().run();
    TestPlanet().run();
+   TestDreamChaser().run();
    TestSatellite().run();
    TestSputnik().run();
+   TestDragon().run();
+   TestStarlink().run();
    TestHubble().run();
 }

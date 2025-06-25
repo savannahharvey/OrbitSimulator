@@ -13,12 +13,14 @@
 
 class TestSatellite;
 class TestSputnik;
+class TestDragon;
 
 class Satellite : public SpaceObject
 {
 public:
    friend TestSatellite;
    friend TestSputnik;
+//   friend TestDragon;
    
    // constructors
    Satellite() : SpaceObject() { isOrbiting = true; parts = 0; fragments = 0; }

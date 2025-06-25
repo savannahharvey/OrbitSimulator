@@ -17,9 +17,19 @@ Simulator::Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight)
    // time
    time = 48.0;
    
+   // Dream Chaser
    spaceObjects.push_back(new DreamChaser());
    spaceObjects.push_back(new Sputnik());
    spaceObjects.push_back(new Hubble());
+
+   // Sputnik
+   spaceObjects.push_back(new Sputnik());
+   
+   // Crew Dragon
+   spaceObjects.push_back(new Dragon());
+   
+   // Starlink
+   spaceObjects.push_back(new Starlink());
 
 	//spaceObjects.push_back(new GPS());
 

@@ -55,6 +55,7 @@ private:
     * output:  pos=(0, 0),
     *          vel=(0, 0),
     *          direction=(0)
+    *          angularMomentum = 0
     *          radius = 0
     *          isDead = false
     *          age = 0
@@ -70,6 +71,7 @@ private:
       assertEquals(test.vel.dx, 0);
       assertEquals(test.vel.dy, 0);
       assertEquals(test.direction.radians, 0);
+      assertEquals(test.angularMomentum, 0);
       assertEquals(test.radius, 0);
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
@@ -82,12 +84,14 @@ private:
     *          pos=(70000, 10000)
     *          vel=(45, 45)
     *          direction=(10)
+    *          angularMomentum = 77
     *          radius = 10
     *          isDead = false
     *          age = 5
     * output:  pos=(70000, 10000)
     *          vel=(45, 45)
     *          direction=(10)
+    *          angularMomentum = 77
     *          radius = 10
     *          isDead = false
     *          age = 5
@@ -100,6 +104,7 @@ private:
       rhs.vel.dx = 45;
       rhs.vel.dy = 45;
       rhs.direction.radians = 10;
+      rhs.angularMomentum = 77;
       rhs.radius = 10;
       rhs.isDead = false;
       rhs.age = 5;
@@ -111,6 +116,7 @@ private:
       assertEquals(test.vel.dx, 45);
       assertEquals(test.vel.dy, 45);
       assertEquals(test.direction.radians, 10);
+      assertEquals(test.angularMomentum, 77);
       assertEquals(test.radius, 10);
       assertEquals(test.isDead, false);
       assertEquals(test.age, 5);
@@ -124,6 +130,7 @@ private:
     * output:  pos=(50000,-50000)
     *          vel=(100, -100)
     *          direction=(0)
+    *          angularMomentum = 0
     *          radius = 0
     *          isDead = false
     *          age = 0
@@ -144,6 +151,7 @@ private:
       assertEquals(test.vel.dx,  100);
       assertEquals(test.vel.dy, -100);
       assertEquals(test.direction.radians, 0);
+      assertEquals(test.angularMomentum, 0);
       assertEquals(test.radius, 0);
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
@@ -154,11 +162,15 @@ private:
     * name:    TEST MOVE GEO UP
     * input:   pos=(0, -42164000.0)
     *          vel=(3100.0, 0.0)
+    *          direction = 0
+    *          angular momentum = 0
     *          acc=(0, 0.169298992)
     *          time=48
     *          age = 0
     * output:  pos=(148800, -42163804.9676)
     *          vel=(3100.0, 8.126351616)
+    *          direction = 0
+    *          angular momentum = 0
     *          age = 1
     *********************************************/
    void test_move_geo_up()
@@ -168,6 +180,8 @@ private:
       s.pos.y = -42164000.0;
       s.vel.dx = 3100.0;
       s.vel.dy = 0.0;
+      s.direction.radians = 0;
+      s.angularMomentum = 0;
       s.age = 0;
       GeoUp gravity;
       double t = 48;
@@ -178,6 +192,8 @@ private:
       assertEquals(s.pos.y, -42163804.9676);
       assertEquals(s.vel.dx, 3100.0);
       assertEquals(s.vel.dy, 8.126351616);
+      assertEquals(s.direction.radians, 0);
+      assertEquals(s.angularMomentum, 0);
       assertEquals(s.age, 1);
    }  // Teardown
    
@@ -186,6 +202,8 @@ private:
     * name:    TEST MOVE RETRO ANGLED
     * input:   pos=(-36515095.13, 21082000.0)
     *          vel=(2050.0, 2684.68)
+    *          direction = 0
+    *          angular momentum = 1
     *          acc=(0.1943286025942485, -0.11219567100418354)
     *          time=48
     *          age = 35
@@ -200,6 +218,8 @@ private:
       s.pos.y = 21082000.0;
       s.vel.dx = 2050.0;
       s.vel.dy = 2684.68;
+      s.direction.radians = 0;
+      s.angularMomentum = 1;
       s.age = 35;
       RetroAngle gravity;
       double t = 48;
@@ -210,6 +230,7 @@ private:
       assertEquals(s.pos.y, 21210735.39058);
       assertEquals(s.vel.dx, 2059.327773);
       assertEquals(s.vel.dy, 2679.294608);
+      assertEquals(s.direction.radians, 1);
       assertEquals(s.age, 36);
    }  // Teardown
    
@@ -218,11 +239,14 @@ private:
     * name:    TEST MOVE NON ORBIT
     * input:   pos=(25000000.0, 25000000.0)
     *          vel=(5000.0, 5000.0)
+    *          direction = 0.15
+    *          angular momentum = 0.85
     *          acc=(-0.22566525361795767, -0.22566525361795767)
     *          time=48
     *          age = 10000
     * output:  pos=(25239740.03362783, 25239740.03362783)
     *          vel=(4989.168068, 4989.168068)
+    *          direction = 1
     *          age = 0
     *********************************************/
    void test_move_non_orbit()
@@ -232,6 +256,8 @@ private:
       s.pos.y = 25000000.0;
       s.vel.dx = 5000.0;
       s.vel.dy = 5000.0;
+      s.direction.radians = 0.15;
+      s.angularMomentum = 0.85;
       s.age = 10000;
       NonOrbit gravity;
       double t = 48;
@@ -242,6 +268,7 @@ private:
       assertEquals(s.pos.y, 25239740.03362783);
       assertEquals(s.vel.dx, 4989.168068);
       assertEquals(s.vel.dy, 4989.168068);
+      assertEquals(s.direction.radians, 1);
       assertEquals(s.age, 0);
    }  // Teardown
    
@@ -423,4 +450,15 @@ private:
       // Verify
       assertEquals(angle.radians, 20);
    }  // Teardown
+   
+   
+   /*********************************************
+    * name:    TEST INPUT
+    * input:
+    * output:
+    *********************************************/
+   void test_input()
+   {
+      
+   }
 };

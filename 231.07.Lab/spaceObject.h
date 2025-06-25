@@ -20,8 +20,10 @@
 #include "uiInteract.h"
 
 class TestSpaceObject;
+class TestDreamChaser;
 class TestSatellite;
 class TestSputnik;
+class TestDragon;
 
 /*********************************************
  * SPACE OBJECT
@@ -31,8 +33,10 @@ class SpaceObject
 {
 public:
    friend TestSpaceObject;
+   friend TestDreamChaser;
    friend TestSatellite;
    friend TestSputnik;
+   friend TestDragon;
    
    // constructors
    SpaceObject(): pos(Position()), vel(Velocity()), direction(Angle()), angularMomentum(0),

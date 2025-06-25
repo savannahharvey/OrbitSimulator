@@ -17,9 +17,11 @@
 class TestPosition;
 class TestSpaceObject;
 class TestPlanet;
+class TestDreamChaser;
 class TestSatellite;
 class TestSputnik;
-
+class TestDragon;
+class TestStarlink;
 class Acceleration;
 class Velocity;
 
@@ -34,8 +36,11 @@ public:
    friend TestPosition;
    friend TestSpaceObject;
    friend TestPlanet;
+   friend TestDreamChaser;
    friend TestSatellite;
    friend TestSputnik;
+   friend TestDragon;
+   friend TestStarlink;
    
    
    // constructors
