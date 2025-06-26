@@ -21,14 +21,24 @@ public:
    friend TestGPS;
 
    // Constructors
-   GPS() : Satellite() {}
+   GPS() : Satellite()
+   {
+      this->pos.setMeters(0.0, 0.0);
+      this->vel.setDX(0.0);
+      this->vel.setDY(0.0);
+      this->angularMomentum = -0.0065;
+      this->direction.setRadians(0.0);
+      this->radius = 12;
+      this->parts = 3;
+      this->fragments = 2;
+   }
    // Non-default Constructor
    GPS(double x, double y, double dx, double dy, double rad) : Satellite()
    {
       this->pos.setMeters(x, y);
       this->vel.setDX(dx);
       this->vel.setDY(dy);
-      this->angularMomentum = -0.0065;
+		this->angularMomentum = -0.0065;
       this->direction.setRadians(rad);
       this->radius = 12;
       this->parts = 3;
