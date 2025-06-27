@@ -105,6 +105,23 @@ public:
    virtual double getDDY() const { return 0.169298992; }
 };
 
+
+/*********************************************
+ * Geo Up thrusting
+ * A stub of acceleration that always returns (2.0, 0.169298992),
+ * the gravity number when you are at (0, -42164000.0) in Geosynchronous orbit and thrusting
+ *********************************************/
+class GeoUpThrust : public AccelerationDummy
+{
+public:
+   GeoUpThrust() : AccelerationDummy() {}
+   
+   virtual double getDDX() const { return 2.0; }
+   virtual double getDDY() const { return 0.169298992; }
+   virtual void add(const Acceleration& rhs) { }
+};
+
+
 /*********************************************
  * RetroAngle
  * A stub of acceleration that always returns
