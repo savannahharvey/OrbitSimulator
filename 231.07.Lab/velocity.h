@@ -49,6 +49,7 @@ public:
    // constructors
    Velocity() : dx(0.0), dy(0.0) {}
    Velocity(double dx, double dy) : dx(dx), dy(dy) {}
+   Velocity(double speed, const Angle & direction) { dy = sin(speed); dx = cos(speed); }
 
    // getters
    double getDX()       const { return dx; }
@@ -64,6 +65,8 @@ public:
    void addDX(double dx) { this->dx = this->dx + dx; }
    void addDY(double dy) { this->dy = this->dy + dy; }
    void add(const Acceleration& acceleration, double time);
+   
+   void operator += (Velocity &rhs) { dx += rhs.dx; dy += rhs.dy; }
 
 private:
    double dx;           // horizontal velocity

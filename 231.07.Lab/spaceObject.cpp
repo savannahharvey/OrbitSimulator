@@ -9,6 +9,26 @@
 
 #include "spaceObject.h"
 
+SpaceObject::SpaceObject(const SpaceObject &parent, const Angle &direction) :
+SpaceObject(parent)
+{
+   double speed = random(1000.0, 3000.0);
+#ifndef NDEBUG
+   speed = 3000.0;
+#endif
+   Velocity kick(speed, direction);
+   vel+=kick;
+   
+   // compute offset.
+   Position posKick;
+   posKick.setMetersX(radius * sin(direction.getRadians()));
+   posKick.setMetersY(radius * cos(direction.getRadians()));
+//   posKick.setPixelsX(4.0 * sin(direction.getRadians()));
+//   posKick.setMetersY(4.0 * cos(direction.getRadians()));
+   pos.addMetersX(posKick.getMetersX());
+   pos.addMetersY(posKick.getMetersY());
+}
+
 /**********************************
  * SPACE OBJECT : MOVE
  * Move an object in space given an amount of time

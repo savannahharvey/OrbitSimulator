@@ -47,6 +47,9 @@ public:
                                    radius(rhs.radius), isDead(rhs.isDead), age(rhs.age) {}
    SpaceObject(const Position &position, const Velocity &velocity) : SpaceObject() { pos = position; vel = velocity; }
    
+   // for making parts
+   SpaceObject(const SpaceObject &parent, const Angle &direction);
+   
    // getters
    Position getPosition()  const { return pos; }
    double getRadius()      const { return radius; }

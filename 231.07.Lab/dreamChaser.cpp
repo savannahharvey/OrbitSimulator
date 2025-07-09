@@ -51,13 +51,7 @@ void DreamChaser::move(double time, Acceleration & gravity)
       
       gravity.add(thrust);
    }
-   // Update Position.
-   double posX = pos.getMetersX() + (vel.getDX() * time) + (0.5 * gravity.getDDX() * (time * time));
-   double posY = pos.getMetersY() + (vel.getDY() * time) + (0.5 * gravity.getDDY() * (time * time));
-   pos.setMeters(posX, posY);
-   // update velocity
-   vel.add(gravity, time);
    
-   this->addAge();
-   this->spin();
+   // do the move
+   SpaceObject::move(time, gravity);
 }
