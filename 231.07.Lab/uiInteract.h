@@ -105,7 +105,7 @@ public:
    virtual void run(void (*callBack)(const Interface *, void *), void *p) { assert(false); }
 
    // Is it time to redraw the screen
-   virtual bool isTimeToDraw() { assert(false); }
+   virtual bool isTimeToDraw() { assert(false); return false; }
 
    // Set the next draw time based on current time and time period
    virtual void setNextDrawTime() { assert(false); }
@@ -125,11 +125,11 @@ public:
    virtual double frameRate() const { assert(false); return 0;   }
    
    // Get various key events
-   virtual int  isDown()      const { assert(false); }
-   virtual int  isUp()        const { assert(false); }
-   virtual int  isLeft()      const { assert(false); }
-   virtual int  isRight()     const { assert(false); }
-   virtual bool isSpace()     const { assert(false); }
+   virtual int  isDown()      const { assert(false); return 0; }
+   virtual int  isUp()        const { assert(false); return 0; }
+   virtual int  isLeft()      const { assert(false); return 0; }
+   virtual int  isRight()     const { assert(false); return 0; }
+   virtual bool isSpace()     const { assert(false); return false; }
 
 private:
    virtual void initialize(int argc, char ** argv, const char * title, const Position & ptUpperRight) { assert(false); }

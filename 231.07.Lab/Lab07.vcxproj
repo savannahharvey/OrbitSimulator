@@ -156,7 +156,11 @@
     <ClInclude Include="acceleration.h" />
     <ClInclude Include="angle.h" />
     <ClInclude Include="dreamChaser.h" />
+    <ClInclude Include="fragment.h" />
     <ClInclude Include="GPS.h" />
+    <ClInclude Include="gpsCenter.h" />
+    <ClInclude Include="gpsLeft.h" />
+    <ClInclude Include="gpsRight.h" />
     <ClInclude Include="hubble.h" />
     <ClInclude Include="planet.h" />
     <ClInclude Include="position.h" />

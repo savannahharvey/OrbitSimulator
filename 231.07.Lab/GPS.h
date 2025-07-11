@@ -10,6 +10,10 @@
 #pragma once
 
 #include "satellite.h"
+#include "fragment.h"
+#include "gpsRight.h"
+#include "gpsLeft.h"
+#include "gpsCenter.h"
 
 class TestSatellite;
 class TestGPS;
@@ -43,6 +47,19 @@ public:
       this->radius = 12;
       this->parts = 3;
       this->fragments = 2;
+   }
+   
+   void destroy(vector<SpaceObject*> &newObjects) override
+   {
+      for (int i = 0; i < fragments; i++)
+      {
+         // create a new object
+         Fragment* pF = new Fragment(*this, Angle(random(0.0, 360.0)));
+         newObjects.push_back(pF);
+      }
+      newObjects.push_back(new GPSRight(*this, Angle(random(0.0, 360.0))));
+      newObjects.push_back(new GPSLeft(*this, Angle(random(0.0, 360.0))));
+      newObjects.push_back(new GPSCenter(*this, Angle(random(0.0, 360.0))));
    }
 
    // Draw

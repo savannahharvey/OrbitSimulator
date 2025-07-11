@@ -96,6 +96,60 @@ void Simulator::moveObjects(const Interface & ui)
 }
 
 /**********************************
+* SIMULATOR : DETECT COLLISION
+**********************************/
+void Simulator::detectCollision()
+{
+   std::vector<SpaceObject*> deadedObjects;
+
+   for (int i = 0; i < spaceObjects.size() - 1; i++)
+   {
+      for (int j = i + 1; j < spaceObjects.size(); j++)
+      {
+         if (checkCollision(spaceObjects[i], spaceObjects[j]))
+         {
+            deadedObjects.push_back(spaceObjects[i]);
+            deadedObjects.push_back(spaceObjects[j]);
+         }
+      }
+   }
+
+   vector<SpaceObject*> newObjects;
+   for (SpaceObject* deaded : deadedObjects)
+   {
+      auto it = std::find(spaceObjects.begin(), spaceObjects.end(), deaded);
+      if (it != spaceObjects.end())
+      {
+         deaded->destroy(newObjects);
+         spaceObjects.erase(it);
+         delete deaded;
+      }
+	}
+
+   for (SpaceObject* newObj : newObjects)
+   {
+      spaceObjects.push_back(newObj);
+   }
+}
+
+/**********************************
+* SIMULATOR : CHECK COLLISION
+**********************************/
+bool Simulator::checkCollision(SpaceObject* &sO1, SpaceObject* &sO2)
+{
+	int x1 = sO1->getPosition().getPixelsX();
+	int y1 = sO1->getPosition().getPixelsY();
+	int x2 = sO2->getPosition().getPixelsX();
+	int y2 = sO2->getPosition().getPixelsY();
+	double distanceBetween = sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
+   if (distanceBetween < (sO1->getRadius() + sO2->getRadius()))
+   {
+      return true;
+	}
+   return false;
+}
+
+/**********************************
 * SIMULATOR : RUN
 **********************************/
 void Simulator::run(const Interface & ui)
@@ -103,4 +157,5 @@ void Simulator::run(const Interface & ui)
    draw();
 
    moveObjects(ui);
+   detectCollision();
 }

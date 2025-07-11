@@ -63,6 +63,7 @@ public:
    virtual void move(double time, Acceleration &gravity);
    virtual void colided() { isDead = true; }
    void spin() { direction.add(angularMomentum);  }
+   virtual void destroy(vector<SpaceObject*> &newObjects) {}
    
    // handle user intput (Mostly for dreamChaser).
    virtual void input(const Interface & ui, vector<SpaceObject*> &spaceObjects) {}
