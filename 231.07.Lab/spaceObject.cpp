@@ -23,8 +23,8 @@ SpaceObject(parent)
    Position posKick;
    posKick.setMetersX(radius * sin(direction.getRadians()));
    posKick.setMetersY(radius * cos(direction.getRadians()));
-//   posKick.setPixelsX(4.0 * sin(direction.getRadians()));
-//   posKick.setMetersY(4.0 * cos(direction.getRadians()));
+   posKick.setPixelsX(4.0 * sin(direction.getRadians()));
+   posKick.setMetersY(4.0 * cos(direction.getRadians()));
    pos.addMetersX(posKick.getMetersX());
    pos.addMetersY(posKick.getMetersY());
 }

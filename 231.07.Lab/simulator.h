@@ -34,6 +34,8 @@ public:
    
    void draw();
    void moveObjects(const Interface & ui);
+	void detectCollision();
+	bool checkCollision(SpaceObject* &sO1, SpaceObject* &sO2);
    void run(const Interface & ui);
   
    double time;

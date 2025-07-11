@@ -9,6 +9,7 @@
 
 #pragma once
 
+#include <cmath>
 
  // for unit tests
 class TestPosition;
