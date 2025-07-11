@@ -9,6 +9,12 @@
 
 #include "spaceObject.h"
 
+
+/**********************************************************************
+ * SPACE OBJECT CONSTRUCTOR for creating parts/fragments.
+ * Take the parent and copy most of the attributes. Then we move it to the offset,
+ * and adjust the velocity by a random number.
+ *********************************************************************/
 SpaceObject::SpaceObject(const SpaceObject &parent, const Angle &direction) :
 SpaceObject(parent)
 {
@@ -28,6 +34,23 @@ SpaceObject(parent)
    pos.addMetersX(posKick.getMetersX());
    pos.addMetersY(posKick.getMetersY());
 }
+
+
+/**********************************************************************
+ * SPACE OBJECT CONSTRUCTOR for creating bullets
+ * Take the parent and copy most of the attributes. Then we move it to the offset,
+ * and adjust the velocity.
+ *********************************************************************/
+SpaceObject::SpaceObject(const SpaceObject &parent, const Position &offset, const Velocity &kick) :
+SpaceObject(parent)
+{
+   // New velocity is the parent's plus the kick.
+   vel+=kick;
+   // Move its position so that it doesnt collide immediately.
+   pos.addMetersX(offset.getMetersX());
+   pos.addMetersY(offset.getMetersY());
+}
+
 
 /**********************************
  * SPACE OBJECT : MOVE

@@ -8,7 +8,7 @@
  ************************************************************************/
 
 #pragma once
-
+#include <cmath>
 
  // for unit tests
 class TestPosition;
@@ -66,7 +66,7 @@ public:
    void addDY(double dy) { this->dy = this->dy + dy; }
    void add(const Acceleration& acceleration, double time);
    
-   void operator += (Velocity &rhs) { dx += rhs.dx; dy += rhs.dy; }
+   void operator += (const Velocity &rhs) { dx += rhs.dx; dy += rhs.dy; }
 
 private:
    double dx;           // horizontal velocity

@@ -50,6 +50,8 @@ public:
    // for making parts
    SpaceObject(const SpaceObject &parent, const Angle &direction);
    
+   SpaceObject(const SpaceObject &parent, const Position &offset, const Velocity &kick);
+   
    // getters
    Position getPosition()  const { return pos; }
    double getRadius()      const { return radius; }
@@ -59,7 +61,7 @@ public:
    
    // setters
    virtual void move(double time, Acceleration &gravity);
-   void colided() { isDead = true; }
+   virtual void colided() { isDead = true; }
    void spin() { direction.add(angularMomentum);  }
    
    // handle user intput (Mostly for dreamChaser).
