@@ -11,6 +11,7 @@
 
 #include <vector>
 #include "spaceObject.h"
+#include "bullet.h"
 
 class TestDreamChaser;
 
@@ -28,6 +29,7 @@ public:
    // Move stuff
    void input(const Interface & ui, vector<SpaceObject*> &spaceObjects) override;
    void move(double time, Acceleration &gravity) override;
+   void shoot(vector<SpaceObject*> &spaceObject);
    
 private:
    bool isThrusting;

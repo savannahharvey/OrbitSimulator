@@ -50,7 +50,7 @@ public:
    // for making parts
    SpaceObject(const SpaceObject &parent, const Angle &direction);
    
-   SpaceObject(const SpaceObject &parent, const Position &offset, const Velocity &kick);
+   SpaceObject(const SpaceObject &parent, double offset, const Velocity &kick);
    
    // getters
    Position getPosition()  const { return pos; }

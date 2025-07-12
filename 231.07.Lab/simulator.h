@@ -19,6 +19,7 @@
 #include "hubble.h"
 #include "GPS.h"
 #include "planet.h"
+#include "bullet.h"
 #include "star.h"
 
 #pragma once

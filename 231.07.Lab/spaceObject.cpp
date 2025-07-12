@@ -41,14 +41,14 @@ SpaceObject(parent)
  * Take the parent and copy most of the attributes. Then we move it to the offset,
  * and adjust the velocity.
  *********************************************************************/
-SpaceObject::SpaceObject(const SpaceObject &parent, const Position &offset, const Velocity &kick) :
+SpaceObject::SpaceObject(const SpaceObject &parent, double offset, const Velocity &kick) :
 SpaceObject(parent)
 {
    // New velocity is the parent's plus the kick.
    vel+=kick;
    // Move its position so that it doesnt collide immediately.
-   pos.addMetersX(offset.getMetersX());
-   pos.addMetersY(offset.getMetersY());
+   pos.addPixelsX(offset * sin(direction.getRadians()));
+   pos.addPixelsY(offset * cos(direction.getRadians()));
 }
 
 

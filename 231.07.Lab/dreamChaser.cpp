@@ -32,7 +32,7 @@ void DreamChaser::input(const Interface & ui, vector<SpaceObject*> &spaceObjects
    // shoot
    if (ui.isSpace())
    {
-      
+      shoot(spaceObjects);
    }
 }
 
@@ -54,4 +54,13 @@ void DreamChaser::move(double time, Acceleration & gravity)
    
    // do the move
    SpaceObject::move(time, gravity);
+}
+
+
+
+void DreamChaser::shoot(vector<SpaceObject*> &spaceObjects)
+{
+   Velocity kick(9000.0, this->direction);
+   
+   spaceObjects.push_back(new Bullet(*this, kick));
 }
