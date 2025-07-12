@@ -52,8 +52,8 @@ public:
    Velocity(double dx, double dy) : dx(dx), dy(dy) {}
    Velocity(double speed, const Angle & direction)
    {
-      dx = speed * cos(direction.getRadians());
-      dy = speed * sin(direction.getRadians());
+      dx = speed * sin(direction.getRadians());
+      dy = speed * cos(direction.getRadians());
    }
 
    // getters
