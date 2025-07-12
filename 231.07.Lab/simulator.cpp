@@ -89,6 +89,12 @@ void Simulator::moveObjects(const Interface & ui)
          gravity = earth.calcGravity(object->getPosition());
 
          object->move(time, gravity);
+
+         if (object->getStatus())
+         {
+            spaceObjects.erase(remove(spaceObjects.begin(), spaceObjects.end(), object), spaceObjects.end());
+            delete object;
+         }
       }
    }
    
@@ -117,7 +123,7 @@ void Simulator::detectCollision()
    vector<SpaceObject*> newObjects;
    for (SpaceObject* deaded : deadedObjects)
    {
-      auto it = std::find(spaceObjects.begin(), spaceObjects.end(), deaded);
+      auto it = find(spaceObjects.begin(), spaceObjects.end(), deaded);
       if (it != spaceObjects.end())
       {
          deaded->destroy(newObjects);
@@ -157,5 +163,6 @@ void Simulator::run(const Interface & ui)
    draw();
 
    moveObjects(ui);
+
    detectCollision();
 }

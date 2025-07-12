@@ -49,6 +49,7 @@ public:
       this->fragments = 2;
    }
    
+   // destroy
    void destroy(vector<SpaceObject*> &newObjects) override
    {
       for (int i = 0; i < fragments; i++)
