@@ -27,6 +27,9 @@ public:
       construct_nondefault_leftUp();
       construct_nondefault_left();
 
+		// destroy
+		destroy_5();
+
       report("GPS");
    }
 
@@ -65,8 +68,6 @@ private:
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
       assertEquals(test.isOrbiting, true);
-      assertEquals(test.parts, 3);
-      assertEquals(test.fragments, 2);
    }  // Teardown
 
    /*********************************************
@@ -103,8 +104,6 @@ private:
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
       assertEquals(test.isOrbiting, true);
-      assertEquals(test.parts, 3);
-      assertEquals(test.fragments, 2);
    }  // Teardown
 
    /*********************************************
@@ -141,7 +140,36 @@ private:
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
       assertEquals(test.isOrbiting, true);
-      assertEquals(test.parts, 3);
-      assertEquals(test.fragments, 2);
    }  // Teardown
+
+   /*********************************************
+    * name:    DESTROY
+    * input:   nothing
+    * output:
+    *********************************************/
+   void destroy_5()
+   {
+      // Setup
+      GPS test;
+      vector<SpaceObject*> newObjects;
+
+      // Exercise
+      test.destroy(newObjects);
+
+      // Verify
+      assertEquals(newObjects.size(), 5);
+
+      assertEquals(dynamic_cast<Fragment*> (newObjects[0]) != nullptr, true);
+      assertEquals(dynamic_cast<Fragment*> (newObjects[1]) != nullptr, true);
+      assertEquals(dynamic_cast<GPSRight*> (newObjects[2]) != nullptr, true);
+      assertEquals(dynamic_cast<GPSLeft*>  (newObjects[3]) != nullptr, true);
+      assertEquals(dynamic_cast<GPSCenter*>(newObjects[4]) != nullptr, true);
+
+      // Teardown
+      delete newObjects[0];
+      delete newObjects[1];
+      delete newObjects[2];
+      delete newObjects[3];
+      delete newObjects[4];
+   }
 };

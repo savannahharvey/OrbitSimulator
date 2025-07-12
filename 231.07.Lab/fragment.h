@@ -11,13 +11,11 @@
 
 #include "satellite.h"
 
-class TestSatellite;
 class TestFragment;
 
 class Fragment : public SpaceObject
 {
 public:
-   friend TestSatellite;
    friend TestFragment;
 
    // Constructors
@@ -30,11 +28,7 @@ public:
       this->radius = 2;
    }
 
-   /**********************************
-    * SPACE OBJECT : MOVE
-    * Move an object in space given an amount of time
-    * and a force of gravity (but override it)
-    **********************************/
+   // SPACE OBJECT : MOVE (but 'override' it to check age)
    void move(double time, Acceleration& gravity)
    {
       double posX = pos.getMetersX() + (vel.getDX() * time) + (0.5 * gravity.getDDX() * (time * time));
@@ -44,7 +38,7 @@ public:
       vel.add(gravity, time);
 
       this->addAge();
-      if (age > 50)
+      if (age >= 50)
          isDead = true;
       this->spin();
    }

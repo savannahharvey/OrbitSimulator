@@ -27,14 +27,10 @@ SpaceObject(parent)
    
    // compute offset.
    Position posKick;
-   posKick.setMetersX(radius * sin(direction.getRadians()));
-   posKick.setMetersY(radius * cos(direction.getRadians()));
-   /*posKick.setPixelsX(4.0 * sin(direction.getRadians()));
-   posKick.setMetersY(4.0 * cos(direction.getRadians()));*/
-   posKick.setPixelsX(radius*1.5 * sin(direction.getRadians()));
-   posKick.setPixelsY(radius*1.5 * cos(direction.getRadians()));
-   pos.addMetersX(posKick.getMetersX());
-   pos.addMetersY(posKick.getMetersY());
+   posKick.setPixelsX(radius * cos(direction.getRadians()));
+   posKick.setPixelsY(radius * sin(direction.getRadians()));
+	pos.addPixelsX(posKick.getPixelsX());
+   pos.addPixelsY(posKick.getPixelsY());
 }
 
 

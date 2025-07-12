@@ -23,6 +23,7 @@ class TestHubble;
 class TestGPS;
 class TestDragon;
 class TestStarlink;
+class TestFragment;
 
 // for add()
 class Acceleration;
@@ -45,6 +46,7 @@ class Velocity
    friend TestGPS;
    friend TestDragon;
    friend TestStarlink;
+   friend TestFragment;
 
 public:
    // constructors

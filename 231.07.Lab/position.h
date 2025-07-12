@@ -24,6 +24,7 @@ class TestHubble;
 class TestGPS;
 class TestDragon;
 class TestStarlink;
+class TestFragment;
 class Acceleration;
 class Velocity;
 
@@ -45,6 +46,7 @@ public:
    friend TestGPS;
    friend TestDragon;
    friend TestStarlink;
+   friend TestFragment;
    
    
    // constructors

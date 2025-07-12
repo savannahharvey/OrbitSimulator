@@ -33,23 +33,20 @@ public:
       this->vel.setDY(0.0);
       this->angularMomentum = 0.00;
       this->radius = 10;
-      this->parts = 4;
-      this->fragments = 2;
+      //this->fragments = 2;
    }
 
    // destroy
    void destroy(vector<SpaceObject*>& newObjects) override
-   {
-      for (int i = 0; i < fragments; i++)
-      {
-         // create a new object
-         Fragment* pF = new Fragment(*this, Angle(random(0.0, 360.0)));
-         newObjects.push_back(pF);
-      }
-      newObjects.push_back(new HubbleTelescope(*this, Angle(random(0.0, 360.0))));
-      newObjects.push_back(new HubbleComputer(*this, Angle(random(0.0, 360.0))));
-      newObjects.push_back(new HubbleLeft(*this, Angle(random(0.0, 360.0))));
-      newObjects.push_back(new HubbleRight(*this, Angle(random(0.0, 360.0))));
+   {    
+      // fragments
+      newObjects.push_back(new Fragment(*this, Angle(60.0)));
+      newObjects.push_back(new Fragment(*this, Angle(240.0)));
+      // parts
+      newObjects.push_back(new HubbleTelescope(*this, Angle(0.0)));
+      newObjects.push_back(new HubbleComputer(*this, Angle(120.0)));
+      newObjects.push_back(new HubbleLeft(*this, Angle(180.0)));
+      newObjects.push_back(new HubbleRight(*this, Angle(300.0)));
    }
 
    // Draw

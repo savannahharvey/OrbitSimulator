@@ -29,10 +29,10 @@ public:
       // Getter
       test_isInOrbit_orbiting();
       test_isInOrbit_not_orbiting();
-      test_getParts_zero();
-      test_getParts_ten();
-      test_getFragments_zero();
-      test_getFragments_five();
+      //test_getParts_zero();
+      //test_getParts_ten();
+      /*test_getFragments_zero();
+      test_getFragments_five();*/
       
       // Setter
       test_leftOrbit();
@@ -68,8 +68,6 @@ private:
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
       assertEquals(test.isOrbiting, true);
-      assertEquals(test.parts, 0);
-      assertEquals(test.fragments, 0);
    }  // Teardown
    
    
@@ -107,8 +105,6 @@ private:
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
       assertEquals(test.isOrbiting, true);
-      assertEquals(test.parts, 0);
-      assertEquals(test.fragments, 0);
    }  // Teardown
    
    
@@ -144,68 +140,68 @@ private:
    }  // Teardown
    
    
-   /*********************************************
-    * name:    TEST GET PARTS : ZERO
-    * input:   parts = 0
-    * output:  0
-    *********************************************/
-   void test_getParts_zero()
-   {  // Setup
-      Satellite test;
-      test.parts = 0;
-      // Exercise
-      int parts = test.getParts();
-      // Verify
-      assertEquals(parts, 0);
-   }  // Teardown
+   ///*********************************************
+   // * name:    TEST GET PARTS : ZERO
+   // * input:   parts = 0
+   // * output:  0
+   // *********************************************/
+   //void test_getParts_zero()
+   //{  // Setup
+   //   Satellite test;
+   //   test.parts = 0;
+   //   // Exercise
+   //   int parts = test.getParts();
+   //   // Verify
+   //   assertEquals(parts, 0);
+   //}  // Teardown
+   //
    
-   
-   /*********************************************
-    * name:    TEST GET PARTS : TEN
-    * input:   parts = 0
-    * output:  0
-    *********************************************/
-   void test_getParts_ten()
-   {  // Setup
-      Satellite test;
-      test.parts = 10;
-      // Exercise
-      int parts = test.getParts();
-      // Verify
-      assertEquals(parts, 10);
-   }  // Teardown
+   ///*********************************************
+   // * name:    TEST GET PARTS : TEN
+   // * input:   parts = 0
+   // * output:  0
+   // *********************************************/
+   //void test_getParts_ten()
+   //{  // Setup
+   //   Satellite test;
+   //   test.parts = 10;
+   //   // Exercise
+   //   int parts = test.getParts();
+   //   // Verify
+   //   assertEquals(parts, 10);
+   //}  // Teardown
    
       
-   /*********************************************
-    * name:    TEST GET FRAGMENTS : ZERO
-    * input:   fragments = 0
-    * output:  0
-    *********************************************/
-   void test_getFragments_zero()
-   {  // Setup
-      Satellite test;
-      test.fragments = 0;
-      // Exercise
-      int fragments = test.getFragments();
-      // Verify
-      assertEquals(fragments, 0);
-   }  // Teardown
+   ///*********************************************
+   // * name:    TEST GET FRAGMENTS : ZERO
+   // * input:   fragments = 0
+   // * output:  0
+   // *********************************************/
+   //void test_getFragments_zero()
+   //{  // Setup
+   //   Satellite test;
+   //   test.fragments = 0;
+   //   // Exercise
+   //   int fragments = test.getFragments();
+   //   // Verify
+   //   assertEquals(fragments, 0);
+   //}  // Teardown
    
    
-   /*********************************************
-    * name:    TEST GET FRAGMENTS : FIVE
-    * input:   fragments = 5
-    * output:  5
-    *********************************************/
-   void test_getFragments_five()
-   {  // Setup
-      Satellite test;
-      test.fragments = 5;
-      // Exercise
-      int fragments = test.getFragments();
-      // Verify
-      assertEquals(fragments, 5);
-   }  // Teardown
+   ///*********************************************
+   // * name:    TEST GET FRAGMENTS : FIVE
+   // * input:   fragments = 5
+   // * output:  5
+   // *********************************************/
+   //void test_getFragments_five()
+   //{  // Setup
+   //   Satellite test;
+   //   test.fragments = 5;
+   //   // Exercise
+   //   int fragments = test.getFragments();
+   //   // Verify
+   //   assertEquals(fragments, 5);
+   //}  // Teardown
    
    
    /*********************************************

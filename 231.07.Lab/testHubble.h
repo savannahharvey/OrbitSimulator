@@ -14,7 +14,7 @@
 #include "unitTest.h"
 
  /*******************************
-  * TEST SPUTNIK
+  * TEST HUBBLE
   * A friend class for Sputnik which contains the Sputnik Unit test
   ********************************/
 class TestHubble : public UnitTest
@@ -24,6 +24,9 @@ public:
    {
       // constructors
       construct_default();
+
+      // destroy
+		destroy_6();
 
       report("Hubble");
    }
@@ -58,7 +61,38 @@ private:
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
       assertEquals(test.isOrbiting, true);
-      assertEquals(test.parts, 4);
-      assertEquals(test.fragments, 2);
    }  // Teardown
+
+   /*********************************************
+    * name:    DESTROY
+    * input:   nothing
+    * output:
+    *********************************************/
+   void destroy_6()
+   {
+      // Setup
+      Hubble test;
+      vector<SpaceObject*> newObjects;
+
+      // Exercise
+      test.destroy(newObjects);
+
+      // Verify
+      assertEquals(newObjects.size(), 6);
+
+      assertEquals(dynamic_cast<Fragment*>(newObjects[0]) != nullptr, true);
+      assertEquals(dynamic_cast<Fragment*>(newObjects[1]) != nullptr, true);
+      assertEquals(dynamic_cast<HubbleTelescope*>(newObjects[2]) != nullptr, true);
+      assertEquals(dynamic_cast<HubbleComputer*>(newObjects[3]) != nullptr, true);
+      assertEquals(dynamic_cast<HubbleLeft*>(newObjects[4]) != nullptr, true);
+      assertEquals(dynamic_cast<HubbleRight*>(newObjects[5]) != nullptr, true);
+
+      // Teardown
+      delete newObjects[0];
+      delete newObjects[1];
+      delete newObjects[2];
+      delete newObjects[3];
+      delete newObjects[4];
+      delete newObjects[5];
+   }
 };

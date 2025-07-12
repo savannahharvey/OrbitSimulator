@@ -156,6 +156,8 @@
   <ItemGroup>
     <ClInclude Include="acceleration.h" />
     <ClInclude Include="angle.h" />
+    <ClInclude Include="bullet.h" />
+    <ClInclude Include="dragon.h" />
     <ClInclude Include="dreamChaser.h" />
     <ClInclude Include="fragment.h" />
     <ClInclude Include="GPS.h" />
@@ -173,7 +175,11 @@
     <ClInclude Include="SpaceObject.h" />
     <ClInclude Include="sputnik.h" />
     <ClInclude Include="star.h" />
+    <ClInclude Include="starlink.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="testDragon.h" />
+    <ClInclude Include="testDreamChaser.h" />
+    <ClInclude Include="testFragment.h" />
     <ClInclude Include="testGPS.h" />
     <ClInclude Include="testHubble.h" />
     <ClInclude Include="testPlanet.h" />
@@ -181,6 +187,7 @@
     <ClInclude Include="testSatellite.h" />
     <ClInclude Include="testSpaceObject.h" />
     <ClInclude Include="testSputnik.h" />
+    <ClInclude Include="testStarlink.h" />
     <ClInclude Include="testVelocity.h" />
     <ClInclude Include="uiDraw.h" />
     <ClInclude Include="uiInteract.h" />

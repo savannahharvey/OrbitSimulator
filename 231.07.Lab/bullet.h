@@ -7,9 +7,9 @@
  *    Here we add the details about orbiting and what heppens when it breaks
  ************************************************************************/
 
-# pragma once
+#pragma once
 
-#include "spaceObject.h"
+#include "SpaceObject.h"
 
 class Bullet : public SpaceObject
 {
