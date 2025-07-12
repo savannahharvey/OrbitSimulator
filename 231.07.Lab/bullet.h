@@ -16,13 +16,9 @@ class Bullet : public SpaceObject
 public:
    Bullet() : SpaceObject() {}
    
-   Bullet(const SpaceObject &parent, const Velocity &kick) : SpaceObject(parent, 30.0, kick) { age = 0; }
+   Bullet(const SpaceObject &parent, const Velocity &kick) : SpaceObject(parent, 19.0, kick) { age = 0; }
    
    void draw(ogstream& gout) override { gout.drawProjectile(pos); }
    
-   void destroy(vector<SpaceObject*> &newObjects) override
-   {
-      if (age > 90)
-         isDead = true;
-   }
+   void move(double time, Acceleration& gravity) override;
 };
