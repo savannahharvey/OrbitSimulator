@@ -24,6 +24,9 @@ public:
    {
       // constructors
       construct_default();
+		
+		// destroy
+		destroy_4();
       
       report("Sputnik");
    }
@@ -57,7 +60,34 @@ private:
       assertEquals(test.isDead, false);
       assertEquals(test.age, 0);
       assertEquals(test.isOrbiting, true);
-      assertEquals(test.parts, 0);
-      assertEquals(test.fragments, 4);
    }  // Teardown
+
+   /*********************************************
+    * name:    DESTROY
+    * input:   nothing
+    * output:  
+    *********************************************/
+   void destroy_4()
+   {  
+      // Setup
+      Sputnik test;
+		vector<SpaceObject*> newObjects;
+
+      // Exercise
+      test.destroy(newObjects);
+
+      // Verify
+		assertEquals(newObjects.size(), 4);
+
+      assertEquals(dynamic_cast<Fragment*>(newObjects[0]) != nullptr, true);
+      assertEquals(dynamic_cast<Fragment*>(newObjects[1]) != nullptr, true);
+      assertEquals(dynamic_cast<Fragment*>(newObjects[2]) != nullptr, true);
+      assertEquals(dynamic_cast<Fragment*>(newObjects[3]) != nullptr, true);
+
+      // Teardown
+      delete newObjects[0];
+      delete newObjects[1];
+      delete newObjects[2];
+      delete newObjects[3];
+   }
 };

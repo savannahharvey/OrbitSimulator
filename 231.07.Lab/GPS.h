@@ -33,8 +33,6 @@ public:
       this->angularMomentum = -0.0065;
       this->direction.setRadians(0.0);
       this->radius = 12;
-      this->parts = 3;
-      this->fragments = 2;
    }
    // Non-default Constructor
    GPS(double x, double y, double dx, double dy, double rad) : Satellite()
@@ -45,22 +43,18 @@ public:
 		this->angularMomentum = -0.0065;
       this->direction.setRadians(rad);
       this->radius = 12;
-      this->parts = 3;
-      this->fragments = 2;
    }
    
    // destroy
    void destroy(vector<SpaceObject*> &newObjects) override
    {
-      for (int i = 0; i < fragments; i++)
-      {
-         // create a new object
-         Fragment* pF = new Fragment(*this, Angle(random(0.0, 360.0)));
-         newObjects.push_back(pF);
-      }
-      newObjects.push_back(new GPSRight(*this, Angle(random(0.0, 360.0))));
-      newObjects.push_back(new GPSLeft(*this, Angle(random(0.0, 360.0))));
-      newObjects.push_back(new GPSCenter(*this, Angle(random(0.0, 360.0))));
+      // fragments
+      newObjects.push_back(new Fragment(*this, Angle(0.0)));
+      newObjects.push_back(new Fragment(*this, Angle(144.0)));
+      // parts
+      newObjects.push_back(new GPSRight(*this, Angle(72.0)));
+      newObjects.push_back(new GPSLeft(*this, Angle(216.0)));
+      newObjects.push_back(new GPSCenter(*this, Angle(360.0)));
    }
 
    // Draw

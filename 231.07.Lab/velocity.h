@@ -9,6 +9,7 @@
 
 #pragma once
 #include <cmath>
+#include "angle.h"
 
  // for unit tests
 class TestPosition;
@@ -22,6 +23,7 @@ class TestHubble;
 class TestGPS;
 class TestDragon;
 class TestStarlink;
+class TestFragment;
 
 // for add()
 class Acceleration;
@@ -44,12 +46,13 @@ class Velocity
    friend TestGPS;
    friend TestDragon;
    friend TestStarlink;
+   friend TestFragment;
 
 public:
    // constructors
    Velocity() : dx(0.0), dy(0.0) {}
    Velocity(double dx, double dy) : dx(dx), dy(dy) {}
-   Velocity(double speed, const Angle & direction) { dy = sin(speed); dx = cos(speed); }
+   Velocity(double speed, const Angle& direction) { dy = sin(direction.getDegrees()) * speed; dx = cos(direction.getDegrees()) * speed; }
 
    // getters
    double getDX()       const { return dx; }

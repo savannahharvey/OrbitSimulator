@@ -12,6 +12,7 @@
 #include "spaceObject.h"
 
 class TestSatellite;
+class TestFragment;
 class TestSputnik;
 class TestDragon;
 
@@ -20,22 +21,33 @@ class Satellite : public SpaceObject
 public:
    friend TestSatellite;
    friend TestSputnik;
+   friend TestFragment;
 //   friend TestDragon;
    
    // constructors
-   Satellite() : SpaceObject() { isOrbiting = true; parts = 0; fragments = 0; }
-   Satellite(Position p, Velocity v) : SpaceObject(p, v) { isOrbiting = true; parts = 0; fragments = 0; }
+   Satellite() : SpaceObject() { isOrbiting = true; }
+   Satellite(Position p, Velocity v) : SpaceObject(p, v) { isOrbiting = true; }
    
    // getters
    bool isInOrbit()   const { return isOrbiting; }
-   int getParts()     const { return parts; }
-   int getFragments() const { return fragments; }
    
    // setters
    void leftOrbit()  { isOrbiting = false; }
    
 protected:
    bool isOrbiting;
-   int parts;
-   int fragments;
+};
+
+/*****************************
+* DUMMY SATELLITE
+* for fragment unit test
+********************************/
+class DummySatellite : public Satellite
+{
+   friend TestFragment;
+public:
+   DummySatellite() : Satellite() { }
+   DummySatellite(Position p, Velocity v) { }
+   bool isInOrbit() { assert(false); return false; }
+   void leftOrbit() { assert(false); }
 };
