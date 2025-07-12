@@ -10,6 +10,7 @@
 #pragma once
 
 #include "satellite.h"
+#include "fragment.h"
 
 class TestSatellite;
 
@@ -27,6 +28,17 @@ public:
       this->angularMomentum = 0.02;
       this->radius = 4;
       this->fragments = 4;
+   }
+
+   // destroy
+   void destroy(vector<SpaceObject*>& newObjects) override
+   {
+      for (int i = 0; i < fragments; i++)
+      {
+         // create a new object
+         Fragment* pF = new Fragment(*this, Angle(random(0.0, 360.0)));
+         newObjects.push_back(pF);
+      }
    }
    
    // Draw

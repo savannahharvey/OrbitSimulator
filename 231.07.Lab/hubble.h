@@ -10,6 +10,11 @@
 #pragma once
 
 #include "satellite.h"
+#include "fragment.h"
+#include "hubbleTelescope.h"
+#include "hubbleComputer.h"
+#include "hubbleLeft.h"
+#include "hubbleRight.h"
 
 class TestSatellite;
 class TestHubble;
@@ -30,6 +35,21 @@ public:
       this->radius = 10;
       this->parts = 4;
       this->fragments = 2;
+   }
+
+   // destroy
+   void destroy(vector<SpaceObject*>& newObjects) override
+   {
+      for (int i = 0; i < fragments; i++)
+      {
+         // create a new object
+         Fragment* pF = new Fragment(*this, Angle(random(0.0, 360.0)));
+         newObjects.push_back(pF);
+      }
+      newObjects.push_back(new HubbleTelescope(*this, Angle(random(0.0, 360.0))));
+      newObjects.push_back(new HubbleComputer(*this, Angle(random(0.0, 360.0))));
+      newObjects.push_back(new HubbleLeft(*this, Angle(random(0.0, 360.0))));
+      newObjects.push_back(new HubbleRight(*this, Angle(random(0.0, 360.0))));
    }
 
    // Draw

@@ -142,6 +142,7 @@
     <ClCompile Include="acceleration.cpp" />
     <ClCompile Include="angle.cpp" />
     <ClCompile Include="dreamChaser.cpp" />
+    <ClCompile Include="hubbleComputer.h" />
     <ClCompile Include="Lab07.cpp" />
     <ClCompile Include="planet.cpp" />
     <ClCompile Include="position.cpp" />
@@ -162,6 +163,9 @@
     <ClInclude Include="gpsLeft.h" />
     <ClInclude Include="gpsRight.h" />
     <ClInclude Include="hubble.h" />
+    <ClInclude Include="hubbleLeft.h" />
+    <ClInclude Include="hubbleRight.h" />
+    <ClInclude Include="hubbleTelescope.h" />
     <ClInclude Include="planet.h" />
     <ClInclude Include="position.h" />
     <ClInclude Include="satellite.h" />
