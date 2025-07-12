@@ -57,10 +57,10 @@ private:
       Fragment test(parent, a);
 
       // Verify
-      assertEquals(test.pos.x, 400.0); // radius * cos(direction.getRadians()) * 40.0(meters from pixels)
-      assertEquals(test.pos.y, 0.0); // radius * sin(direction.getRadians()) * 40.0
-      assertEquals(test.vel.dx, 3000.0); // dx = cos(0.0) * 3000
-      assertEquals(test.vel.dy, 0.0); // dy = sin(0.0) * 3000
+      assertEquals(test.pos.x, 400.0); // radius * sin(direction.getRadians()) * 40.0(meters from pixels)
+      assertEquals(test.pos.y, 0.0); // radius * cos(direction.getRadians()) * 40.0
+      assertEquals(test.vel.dx, 0.0); // dx = cos(0.0) * 3000
+      assertEquals(test.vel.dy, 3000.0); // dy = sin(0.0) * 3000
       assertEquals(test.direction.radians, 0.0);
       assertEquals(test.angularMomentum, 0.0);
       assertEquals(test.radius, 2);
@@ -105,11 +105,11 @@ private:
       // Exercise
       f.move(t, gravity);
 
-      // Verifyr
-      assertEquals(f.pos.x, 293200.0); // radius * cos(direction.getRadians()) * 40.0 + 0.0
-      assertEquals(f.pos.y, -42163804.9676); // radius * sin(direction.getRadians()) * 40.0 + (-42164000.0)
-      assertEquals(f.vel.dx, 6100.0); // dx = (cos(pi) * 3000) + 3100
-      assertEquals(f.vel.dy, 8.126351616); // dy = (sin(pi) * 3000) + 0.0
+      // Verify
+      assertEquals(f.pos.x, 421.9214661); // radius * sin(direction.getRadians()) * 40.0 + 400.0
+      assertEquals(f.pos.y, -42163600.6); // radius * cos(direction.getRadians()) * 40.0 + (-42164000.0)
+      assertEquals(f.vel.dx, 6095.49145); // dx = (cos(pi) * 3000) + 3100
+      assertEquals(f.vel.dy, 3164.410995); // dy = (sin(pi) * 3000) + 3000.0
       assertEquals(f.direction.radians, 0);
       assertEquals(f.angularMomentum, 0);
       assertEquals(f.age, 1);

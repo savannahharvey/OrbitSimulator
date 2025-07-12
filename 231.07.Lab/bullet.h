@@ -16,7 +16,7 @@ class Bullet : public SpaceObject
 public:
    Bullet() : SpaceObject() {}
 
-   Bullet(const SpaceObject& parent, const Position& offset, const Velocity& kick) : SpaceObject(parent, offset, kick) {}
+   Bullet(const SpaceObject& parent, double offset, const Velocity& kick) : SpaceObject(parent, offset, kick) {}
 
    void draw(ogstream& gout) override { gout.drawProjectile(pos); }
 
