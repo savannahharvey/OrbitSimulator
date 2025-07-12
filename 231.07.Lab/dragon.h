@@ -29,7 +29,7 @@ public:
       this->vel.setDY(0.0);
       this->angularMomentum = 0.02;
       this->radius = 7;
-      this->fragments = 2;
+//      this->fragments = 2;
    }
    
    // Draw
@@ -38,7 +38,7 @@ public:
    // destroy
    void destroy(vector<SpaceObject*> &newObjects) override
    {
-      for (int i = 0; i < fragments; i++)
+      for (int i = 0; i < 2; i++)
       {
          // create a new object
          Fragment* pF = new Fragment(*this, Angle(random(0.0, 360.0)));
