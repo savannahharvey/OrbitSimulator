@@ -27,7 +27,7 @@ class TestFragment;
 
 // for add()
 class Acceleration;
-class Angle;
+//class Angle;
 
 /*********************************************
  * Velocity
@@ -52,7 +52,11 @@ public:
    // constructors
    Velocity() : dx(0.0), dy(0.0) {}
    Velocity(double dx, double dy) : dx(dx), dy(dy) {}
-   Velocity(double speed, const Angle& direction) { dy = sin(direction.getDegrees()) * speed; dx = cos(direction.getDegrees()) * speed; }
+   Velocity(double speed, const Angle & direction)
+   {
+      dx = speed * sin(direction.getRadians());
+      dy = speed * cos(direction.getRadians());
+   }
 
    // getters
    double getDX()       const { return dx; }
@@ -69,7 +73,7 @@ public:
    void addDY(double dy) { this->dy = this->dy + dy; }
    void add(const Acceleration& acceleration, double time);
    
-   void operator += (const Velocity &rhs) { dx += rhs.dx; dy += rhs.dy; }
+   void operator += (const Velocity &rhs) { this->dx += rhs.dx; this->dy += rhs.dy; }
 
 private:
    double dx;           // horizontal velocity

@@ -23,7 +23,7 @@ class Planet : public SpaceObject
 {
 	friend TestPlanet;
 public:
-	Planet() { SpaceObject(); radius = 6378000.0; earthGravity = 9.80665; }
+   Planet() { SpaceObject(); radius = 6378000.0; earthGravity = 9.80665; angularMomentum = -0.0001; }
 
 	// draw
 	void draw(ogstream& gout) override {
