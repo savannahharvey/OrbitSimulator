@@ -23,12 +23,11 @@ class Planet : public SpaceObject
 {
 	friend TestPlanet;
 public:
-   Planet() { SpaceObject(); radius = 6378000.0; earthGravity = 9.80665; angularMomentum = -0.0001; }
+	Planet() { SpaceObject(); radiusMeters = 6378000.0;  radius = 50; earthGravity = 9.80665; angularMomentum = -0.0001; }
 
 	// draw
 	void draw(ogstream& gout) override {
-		gout.drawEarth(pos,
-			direction.getDegrees());
+		gout.drawEarth(pos, direction.getDegrees());
 	}
 
 	// all calculations together in one
@@ -37,6 +36,7 @@ public:
 private:
 
 	// 9.8 for earth
+	double radiusMeters;
 	double earthGravity;
 	Angle calcGravityDirection(double x, double y);
 	double calcHeight(double x, double y);

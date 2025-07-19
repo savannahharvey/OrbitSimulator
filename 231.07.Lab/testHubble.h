@@ -72,6 +72,8 @@ private:
    {
       // Setup
       Hubble test;
+      test.pos.x = 0.0;
+		test.pos.y = -42164000.0;
       vector<SpaceObject*> newObjects;
 
       // Exercise
@@ -81,11 +83,29 @@ private:
       assertEquals(newObjects.size(), 6);
 
       assertEquals(dynamic_cast<Fragment*>(newObjects[0]) != nullptr, true);
+      assertEquals(newObjects[0]->getPosition().x, 200.0); // 0.0 + (5.0 * 40)
+      assertEquals(newObjects[0]->getPosition().y, -42163653.5898384824); // -42164000.0 + (8.6603 * 40)
+      assertEquals(newObjects[0]->getDirection().radians, 1.0471975512);
       assertEquals(dynamic_cast<Fragment*>(newObjects[1]) != nullptr, true);
+      assertEquals(newObjects[1]->getPosition().x, -200.0); // 0.0 + (-5.0 * 40)
+      assertEquals(newObjects[1]->getPosition().y, -42164346.4101615176); // -42164000.0 + (-8.6603 * 40)
+      assertEquals(newObjects[1]->getDirection().radians, 4.1887902048);
       assertEquals(dynamic_cast<HubbleTelescope*>(newObjects[2]) != nullptr, true);
+      assertEquals(newObjects[2]->getPosition().x, 400.0); // 0.0 + (10 * 40)
+      assertEquals(newObjects[2]->getPosition().y, -42164000.0); // -42164000.0 + (0 * 40)
+      assertEquals(newObjects[2]->getDirection().radians, 0.0);
       assertEquals(dynamic_cast<HubbleComputer*>(newObjects[3]) != nullptr, true);
+      assertEquals(newObjects[3]->getPosition().x, -200.0); // 0.0 + (-5.0 * 40)
+      assertEquals(newObjects[3]->getPosition().y, -42163653.5898384824); // -42164000.0 + (8.6603 * 40)
+      assertEquals(newObjects[3]->getDirection().radians, 2.0943951024);
       assertEquals(dynamic_cast<HubbleLeft*>(newObjects[4]) != nullptr, true);
+      assertEquals(newObjects[4]->getPosition().x, -400.0); // 0.0 + (-10.0 * 40)
+      assertEquals(newObjects[4]->getPosition().y, -42164000.0); // -42164000.0 + (0 * 40)
+      assertEquals(newObjects[4]->getDirection().radians, 3.1415926536);
       assertEquals(dynamic_cast<HubbleRight*>(newObjects[5]) != nullptr, true);
+      assertEquals(newObjects[5]->getPosition().x, 200.0); // 0.0 + (5.0 * 40)
+      assertEquals(newObjects[5]->getPosition().y, -42164346.4101615176); // -42164000.0 + (-8.6603 * 40)
+      assertEquals(newObjects[5]->getDirection().radians, 5.2359877560);
 
       // Teardown
       delete newObjects[0];

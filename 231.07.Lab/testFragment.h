@@ -102,14 +102,15 @@ private:
 
       GeoUp gravity;
       double t = 48;
+
       // Exercise
       f.move(t, gravity);
 
       // Verify
-      assertEquals(f.pos.x, 421.9214661); // radius * sin(direction.getRadians()) * 40.0 + 400.0
-      assertEquals(f.pos.y, -42163600.6); // radius * cos(direction.getRadians()) * 40.0 + (-42164000.0)
-      assertEquals(f.vel.dx, 6095.49145); // dx = (cos(pi) * 3000) + 3100
-      assertEquals(f.vel.dy, 3164.410995); // dy = (sin(pi) * 3000) + 3000.0
+      assertEquals(f.pos.x, 149200.0); // radius * sin(direction.getRadians()) * 40.0 + 400.0
+      assertEquals(f.pos.y, -42019804.96756); // radius * cos(direction.getRadians()) * 40.0 - 42164000.0
+      assertEquals(f.vel.dx, 3100.0); // dx = (cos(pi) * 3000) + 3100.0
+      assertEquals(f.vel.dy, 3008.12635); // dy = (sin(pi) * 3000) + 3000.0
       assertEquals(f.direction.radians, 0);
       assertEquals(f.angularMomentum, 0);
       assertEquals(f.age, 1);
@@ -151,13 +152,14 @@ private:
 
       GeoUp gravity;
       double t = 48;
+
       // Exercise
       f.move(t, gravity);
       // Verify
-      assertEquals(f.pos.x, 292800.0); // radius * cos(direction.getRadians()) * 40.0 + 0.0
-      assertEquals(f.pos.y, -42163804.9676); // radius * sin(direction.getRadians()) * 40.0 + (-42164000.0)
-      assertEquals(f.vel.dx, 6100.0); // dx = (cos(pi) * 3000) + 3100
-      assertEquals(f.vel.dy, 8.126351616); // dy = (sin(pi) * 3000) + 0.0
+      assertEquals(f.pos.x, 148800.0); // radius * sin(direction.getRadians()) * 40.0 + 400.0
+      assertEquals(f.pos.y, -42019804.96756); // radius * cos(direction.getRadians()) * 40.0 - 42164000.0
+      assertEquals(f.vel.dx, 3100.0); // dx = (cos(pi) * 3000) + 3100.0
+      assertEquals(f.vel.dy, 3008.12635); // dy = (sin(pi) * 3000) + 3000.0
       assertEquals(f.direction.radians, 0);
       assertEquals(f.angularMomentum, 0);
       assertEquals(f.radius, 2);

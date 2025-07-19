@@ -20,6 +20,7 @@
 #include "testHubble.h"
 #include "testGPS.h"
 #include "testFragment.h"
+#include "testSimulator.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -52,4 +53,5 @@ void testRunner()
    TestHubble().run();
    TestGPS().run();
    TestFragment().run();
+	TestSimulator().run();
 }

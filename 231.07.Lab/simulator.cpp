@@ -53,6 +53,24 @@ Simulator::Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight)
    }
 }
 
+
+/**********************************
+* SIMULATOR : DESTRUCTOR
+******************************/
+Simulator::~Simulator()
+{
+   delete pEarth;
+   pEarth = nullptr;
+
+	// delete all space objects just in case
+   for (SpaceObject* object : spaceObjects)
+   {
+      delete object;
+   }
+   spaceObjects.clear();
+}
+
+
 /**********************************
 * SIMULATOR : DRAW
 **********************************/
@@ -65,7 +83,7 @@ void Simulator::draw()
       starVect[i].draw(gout);
 
    // draw the earth
-   earth.draw(gout);
+	pEarth->draw(gout);
 
    // draw spaceObjects
    for (SpaceObject* object : spaceObjects)
@@ -79,6 +97,8 @@ void Simulator::draw()
 **********************************/
 void Simulator::moveObjects(const Interface & ui)
 {
+   vector<SpaceObject*> kill;
+
    if (spaceObjects.size() > 0)
    {
       // dream chaser should be first in the list.
@@ -86,19 +106,24 @@ void Simulator::moveObjects(const Interface & ui)
       for (SpaceObject* object : spaceObjects)
       {
          Acceleration gravity;
-         gravity = earth.calcGravity(object->getPosition());
+         gravity = pEarth->calcGravity(object->getPosition());
 
          object->move(time, gravity);
 
          if (object->getStatus())
          {
-            spaceObjects.erase(remove(spaceObjects.begin(), spaceObjects.end(), object), spaceObjects.end());
-            delete object;
+            kill.push_back(object);
          }
       }
    }
+
+   for (SpaceObject* object : kill)
+   {
+      spaceObjects.erase(remove(spaceObjects.begin(), spaceObjects.end(), object), spaceObjects.end());
+      delete object;
+	}
    
-   earth.spin();
+   pEarth->spin();
 }
 
 /**********************************
@@ -108,12 +133,21 @@ void Simulator::detectCollision()
 {
    std::vector<SpaceObject*> deadedObjects;
 
-   for (int i = 0; i < spaceObjects.size() - 1; i++)
+   for (int i = 0; i < spaceObjects.size(); i++)
    {
-      for (int j = i + 1; j < spaceObjects.size(); j++)
+		// Check if the Earth is colliding with any other space object
+      if (checkCollision(reinterpret_cast<SpaceObject*&>(pEarth), spaceObjects[i]))
+      {
+			// only add the object to the deadedObjects
+			deadedObjects.push_back(spaceObjects[i]);
+      }
+
+		// Check for collisions between other space objects
+      for (int j = i + 1; j < spaceObjects.size() - 1; j++)
       {
          if (checkCollision(spaceObjects[i], spaceObjects[j]))
          {
+				// add both objects to the deadedObjects list
             deadedObjects.push_back(spaceObjects[i]);
             deadedObjects.push_back(spaceObjects[j]);
          }
@@ -121,17 +155,20 @@ void Simulator::detectCollision()
    }
 
    vector<SpaceObject*> newObjects;
+	// for every object in deaded list, destroy it and remove it from the spaceObjects vector
    for (SpaceObject* deaded : deadedObjects)
    {
+		// find the deaded object in the spaceObjects vector
       auto it = find(spaceObjects.begin(), spaceObjects.end(), deaded);
       if (it != spaceObjects.end())
       {
-         deaded->destroy(newObjects);
+			deaded->destroy(newObjects); // will add new objects to the newObjects vector
          spaceObjects.erase(it);
          delete deaded;
       }
 	}
 
+	// add all new objects to the spaceObjects vector
    for (SpaceObject* newObj : newObjects)
    {
       spaceObjects.push_back(newObj);
@@ -147,6 +184,7 @@ bool Simulator::checkCollision(SpaceObject* &sO1, SpaceObject* &sO2)
 	int y1 = sO1->getPosition().getPixelsY();
 	int x2 = sO2->getPosition().getPixelsX();
 	int y2 = sO2->getPosition().getPixelsY();
+	// if hypotenuse is less than the sum of the radii, then they are colliding
 	double distanceBetween = sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
    if (distanceBetween < (sO1->getRadius() + sO2->getRadius()))
    {

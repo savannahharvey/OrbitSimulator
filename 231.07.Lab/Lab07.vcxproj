@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="acceleration.cpp" />
     <ClCompile Include="angle.cpp" />
+    <ClCompile Include="bullet.cpp" />
     <ClCompile Include="dreamChaser.cpp" />
     <ClCompile Include="hubbleComputer.h" />
     <ClCompile Include="Lab07.cpp" />
@@ -158,6 +159,9 @@
     <ClInclude Include="angle.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="dragon.h" />
+    <ClInclude Include="dragonCenter.h" />
+    <ClInclude Include="dragonLeft.h" />
+    <ClInclude Include="dragonRight.h" />
     <ClInclude Include="dreamChaser.h" />
     <ClInclude Include="fragment.h" />
     <ClInclude Include="GPS.h" />
@@ -176,6 +180,8 @@
     <ClInclude Include="sputnik.h" />
     <ClInclude Include="star.h" />
     <ClInclude Include="starlink.h" />
+    <ClInclude Include="starlinkArray.h" />
+    <ClInclude Include="starlinkBody.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="testDragon.h" />
     <ClInclude Include="testDreamChaser.h" />
@@ -185,6 +191,7 @@
     <ClInclude Include="testPlanet.h" />
     <ClInclude Include="testPosition.h" />
     <ClInclude Include="testSatellite.h" />
+    <ClInclude Include="testSimulator.h" />
     <ClInclude Include="testSpaceObject.h" />
     <ClInclude Include="testSputnik.h" />
     <ClInclude Include="testStarlink.h" />

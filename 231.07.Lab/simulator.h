@@ -24,14 +24,18 @@
 
 #pragma once
 
+class TestSimulator;
+
 /*************************************************************************
  * Simulator
  * Test structure to capture the LM that will move around the screen
  *************************************************************************/
 class Simulator
 {
+	friend TestSimulator;
 public:
    Simulator(Position ptUpperRight);
+   ~Simulator();
    
    void draw();
    void moveObjects(const Interface & ui);
@@ -47,7 +51,7 @@ private:
    vector<SpaceObject*> spaceObjects;
 
    // earth
-   Planet earth;
+   Planet* pEarth = new Planet();
 
    // stars
    vector<Star> starVect;

@@ -151,6 +151,8 @@ private:
    {
       // Setup
       GPS test;
+		test.pos.x = 23001634.72;
+		test.pos.y = 13280000.0;
       vector<SpaceObject*> newObjects;
 
       // Exercise
@@ -160,10 +162,25 @@ private:
       assertEquals(newObjects.size(), 5);
 
       assertEquals(dynamic_cast<Fragment*> (newObjects[0]) != nullptr, true);
+		assertEquals(newObjects[0]->getPosition().x, 23002114.72); // 23001634.72 + (12.0 * 40)
+		assertEquals(newObjects[0]->getPosition().y, 13280000.0); // 13280000.0 + (0 * 40)
+		assertEquals(newObjects[0]->getDirection().radians, 0.0);
       assertEquals(dynamic_cast<Fragment*> (newObjects[1]) != nullptr, true);
+      assertEquals(newObjects[1]->getPosition().x, 23001246.3918427005); // 23001634.72 + (-9.708203932 * 40)
+      assertEquals(newObjects[1]->getPosition().y, 13280282.1369211003); // 13280000.0 + (7.053423028 * 40)
+      assertEquals(newObjects[1]->getDirection().radians, 2.5132741229);
       assertEquals(dynamic_cast<GPSRight*> (newObjects[2]) != nullptr, true);
+      assertEquals(newObjects[2]->getPosition().x, 23001783.0481573008); // 23001634.72 + (3.708203932 * 40)
+      assertEquals(newObjects[2]->getPosition().y, 13280456.5071278214); // 13280000.0 + (11.4126782 * 40)
+      assertEquals(newObjects[2]->getDirection().radians, 1.2566370614);
       assertEquals(dynamic_cast<GPSLeft*>  (newObjects[3]) != nullptr, true);
+      assertEquals(newObjects[3]->getPosition().x, 23001246.3918427005); // 23001634.72 + (-9.708203932 * 40)
+      assertEquals(newObjects[3]->getPosition().y, 13279717.8630788997); // 13280000.0 + (-7.053423028 * 40)
+      assertEquals(newObjects[3]->getDirection().radians, 3.7699111843);
       assertEquals(dynamic_cast<GPSCenter*>(newObjects[4]) != nullptr, true);
+      assertEquals(newObjects[4]->getPosition().x, 23001783.0481573008); // 23001634.72 + (3.708203932 * 40)
+      assertEquals(newObjects[4]->getPosition().y, 13279543.4928721786); // 13280000.0 + (-11.4126782 * 40)
+      assertEquals(newObjects[4]->getDirection().radians, 5.0265482457);
 
       // Teardown
       delete newObjects[0];

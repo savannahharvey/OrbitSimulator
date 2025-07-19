@@ -50,6 +50,7 @@ private:
       
       // Exercise
       Sputnik test;
+
       // Verify
       assertEquals(test.pos.x, -36515095.13);
       assertEquals(test.pos.y, 21082000.0);
@@ -71,6 +72,8 @@ private:
    {  
       // Setup
       Sputnik test;
+      test.pos.x = -36515095.13;
+      test.pos.y = 21082000.0;
 		vector<SpaceObject*> newObjects;
 
       // Exercise
@@ -80,9 +83,21 @@ private:
 		assertEquals(newObjects.size(), 4);
 
       assertEquals(dynamic_cast<Fragment*>(newObjects[0]) != nullptr, true);
+      assertEquals(newObjects[0]->getPosition().x, -36514935.13); // -36515095.13 + (4.0 * 40)
+      assertEquals(newObjects[0]->getPosition().y, 21082000.0); // 21082000.0 + (0 * 40)
+      assertEquals(newObjects[0]->getDirection().radians, 0.0);
       assertEquals(dynamic_cast<Fragment*>(newObjects[1]) != nullptr, true);
+      assertEquals(newObjects[1]->getPosition().x, -36515095.13); // -36515095.13 + ( * 40)
+      assertEquals(newObjects[1]->getPosition().y, 21082160.0); // 21082000.0 + ( * 40)
+      assertEquals(newObjects[1]->getDirection().radians, 1.5707963268);
       assertEquals(dynamic_cast<Fragment*>(newObjects[2]) != nullptr, true);
+      assertEquals(newObjects[2]->getPosition().x, -36515255.13); // -36515095.13 + ( * 40)
+      assertEquals(newObjects[2]->getPosition().y, 21082000.0); // 21082000.0 + ( * 40)
+      assertEquals(newObjects[2]->getDirection().radians, 3.1415926536);
       assertEquals(dynamic_cast<Fragment*>(newObjects[3]) != nullptr, true);
+      assertEquals(newObjects[3]->getPosition().x, -36515095.13); // -36515095.13 + ( * 40)
+      assertEquals(newObjects[3]->getPosition().y, 21081840.0); // 21082000.0 + ( * 40)
+      assertEquals(newObjects[3]->getDirection().radians, 4.7123889804);
 
       // Teardown
       delete newObjects[0];

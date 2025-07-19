@@ -54,7 +54,7 @@ public:
       // parts
       newObjects.push_back(new GPSRight(*this, Angle(72.0)));
       newObjects.push_back(new GPSLeft(*this, Angle(216.0)));
-      newObjects.push_back(new GPSCenter(*this, Angle(360.0)));
+      newObjects.push_back(new GPSCenter(*this, Angle(288.0)));
    }
 
    // Draw

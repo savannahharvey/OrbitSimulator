@@ -26,10 +26,6 @@ public:
 		this->direction = direction;
 		this->isDead = false;
       this->radius = 2;
-		std::cout << "Fragment created at " << pos << std::endl;
-      std::cout << "Fragment direction: " << direction.getDegrees() << std::endl;
-		std::cout << "Fragment x velocity: " << vel.getDX() << std::endl;
-		std::cout << "Fragment y velocity: " << vel.getDY() << std::endl;
    }
 
    // SPACE OBJECT : MOVE (but 'override' it to check age)

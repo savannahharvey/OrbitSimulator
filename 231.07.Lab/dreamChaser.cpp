@@ -62,5 +62,5 @@ void DreamChaser::shoot(vector<SpaceObject*> &spaceObjects)
 {
    Velocity kick(9000.0, this->direction);
    
-   spaceObjects.push_back(new Bullet(*this, 4.0, kick));
+   spaceObjects.push_back(new Bullet(*this, kick));
 }

@@ -25,6 +25,7 @@ class TestSatellite;
 class TestSputnik;
 class TestHubble;
 class TestDragon;
+class TestSimulator;
 
 /*********************************************
  * SPACE OBJECT
@@ -39,6 +40,7 @@ public:
    friend TestSputnik;
    friend TestHubble;
    friend TestDragon;
+   friend TestSimulator;
    
    // constructors
    SpaceObject(): pos(Position()), vel(Velocity()), direction(Angle()), angularMomentum(0),
