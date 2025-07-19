@@ -25,8 +25,13 @@ public:
       // Constructor
       construct_default();
 
+		// detectCollision
       detectCollision_0();
       detectCollision_2();
+
+		// checkCollision
+		checkCollision_false();
+      checkCollision_true();
 
       report("Simulator");
    }
@@ -119,8 +124,6 @@ private:
       // Exercise
       sim.detectCollision();
 
-      std::cout << "Space Objects after collision detection: " << sim.spaceObjects.size() << std::endl;
-
       // Verify
       assertEquals(sim.spaceObjects.size(), 19); // 19 items in spaceObjects vector now
 
@@ -147,6 +150,62 @@ private:
       assertUnit(dynamic_cast<Fragment*>(sim.spaceObjects[16]) != nullptr);
       assertUnit(dynamic_cast<Fragment*>(sim.spaceObjects[17]) != nullptr);
       assertUnit(dynamic_cast<Fragment*>(sim.spaceObjects[18]) != nullptr);
+
+      // Teardown
+   }
+
+   /*********************************************
+    * name:    CHECK COLLISION, FALSE
+    *********************************************/
+   void checkCollision_false()
+   {
+      // Setup
+      Position ptUpperRight;
+      ptUpperRight.setZoom(128000.0 /* 128km equals 1 pixel */);
+      ptUpperRight.setPixelsX(1000.0);
+      ptUpperRight.setPixelsY(1000.0);
+
+      Simulator sim(ptUpperRight);
+		SpaceObject* pObj1 = sim.spaceObjects[1]; // Hubble
+		SpaceObject* pObj2 = sim.spaceObjects[2]; // Sputnik
+
+		bool isCollided = true;
+
+		// Exercise
+		isCollided = sim.checkCollision(pObj1, pObj2);
+
+      // Verify
+		assertEquals(isCollided, false); // No collision detected
+      
+		// Teardown
+   }
+
+   /*********************************************
+    * name:    CHECK COLLISION, TRUE
+    *********************************************/
+   void checkCollision_true()
+   {
+      // Setup
+      Position ptUpperRight;
+      ptUpperRight.setZoom(128000.0 /* 128km equals 1 pixel */);
+      ptUpperRight.setPixelsX(1000.0);
+      ptUpperRight.setPixelsY(1000.0);
+
+      Simulator sim(ptUpperRight);
+      SpaceObject* pObj1 = sim.spaceObjects[1]; // Hubble
+      sim.spaceObjects[1]->pos.setPixelsX(10000000.0);
+      sim.spaceObjects[1]->pos.setPixelsY(10000000.0);
+      SpaceObject* pObj2 = sim.spaceObjects[2]; // Sputnik
+      sim.spaceObjects[2]->pos.setPixelsX(10000000.0);
+      sim.spaceObjects[2]->pos.setPixelsY(10000000.0);
+
+      bool isCollided = false;
+
+      // Exercise
+      isCollided = sim.checkCollision(pObj1, pObj2);
+
+      // Verify
+      assertEquals(isCollided, true); // collision detected
 
       // Teardown
    }
